@@ -23,14 +23,20 @@ Jobtest is a rails application for a clean and simple to manage Jobboard.
 * Configuration
   
 * Database creation
-  Requires Postgresql
+  
+  Requires Postgresql 
   
 * Database initialization
   
 * How to run the test suite
-  
-* Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
   
-* ...
+  Run Migration 
+  
+  bin/rails db:migrate 
+  
+  
+  Then server 
+  
+  bin/rails server 
