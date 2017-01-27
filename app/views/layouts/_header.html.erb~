@@ -1,0 +1,23 @@
+
+<div class="ui menu">
+    <div class="item">
+	<%= img_tag "logo.jpeg" %>
+    </div>
+
+    <div class="right menu">
+	<div class="item">
+	    Jobs
+	</div>
+	<div class="item">
+	    Internship
+	</div>
+	<div class="item">
+	    Login
+	</div>
+	<div class="item">
+	    <button class="ui violet button">
+		Signup
+	    </button>
+	</div>
+    </div>
+</div>
