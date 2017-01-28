@@ -1,31 +1,23 @@
 
-<div class="ui text menu">
-
-    
-    
-    <div class="item">
-	<%= img_tag "logo.jpeg" %>
-    </div>
-    
-    
-    
-    <div class="right menu">
+<div class="ui container">
+    <div class="ui text menu">
 	<div class="item">
-	    Jobs
+	    <img> </img>
 	</div>
-	<div class="item">
-	    Internship
+	
+	<div class="right menu">
+	    <%= link_to 'Jobs', '#', class: 'item' %>
+	    <%= link_to 'Internship', '#', class: 'item' %>
+	    <% if jobseeker_signed_in? %>
+		Logged in as <strong><%= current_jobseeker.email %></strong>
+		<%= link_to 'Edit profile', edit_jobseeker_registration_path, class: 'item' %> 
+		<%= link_to "Logout", destroy_jobseeker_session_path, method: :delete, :class => 'item'  %>
+	    <% else %>
+		<%= link_to "Login", new_jobseeker_session_path, class: 'item'  %>
+		<button class="ui teal button">
+		    <%= link_to "Sign up", new_jobseeker_registration_path, class: 'item'  %> 
+		</button>
+	    <% end  %>
 	</div>
-
-	<% if user_signed_in? %>
-	    Logged in as <strong><%= current_user.email %></strong>.
-	    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'item' %> 
-	    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'item'  %>
-	<% else %>
-	    <%= link_to "Login", new_user_session_path, :class => 'item'  %>
-	    <button class="ui violet button">
-		<%= link_to "Sign up", new_user_registration_path, :class => 'item'  %> 
-	    </button>
-	<% end  %>
     </div>
 </div>
