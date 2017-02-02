@@ -1,2 +1,65 @@
+<div class="ui two column grid">
+    <div class="row">
+	<div class="column">
+	    <%= image_tag "job.jpeg" %>
+	</div>
+	<div class="column">
+	    
+	</div>
+    </div>
+</div>
 
-<h2> Welcome to the  Index  page otherwise called the landing page <h2> 
+<div class="row">
+    <div class="column">
+	<h2> New Jobs </h2>
+
+	<div class="ui divided items">
+	    <div class="item">
+		<div class="content">
+		    <a class="header">12 Years a Slave</a>
+		    <div class="meta">
+			<span class="cinema">Union Square 14</span>
+		    </div>
+		    <div class="description">
+			<p></p>
+		    </div>
+		    <div class="extra">
+			<div class="ui label">IMAX</div>
+			<div class="ui label"><i class="globe icon"></i> Additional Languages</div>
+		    </div>
+		</div>
+		<div class="extra">
+		    <div class="ui right floated primary button">
+			Buy tickets
+			<i class="right chevron icon"></i>
+		    </div>
+		</div>
+	    </div>
+	    <% @jobs.each do |j| %>
+		<div class="item">
+		    <div class="content">
+			
+			<%= link_to j.title, class: 'header' %>
+			
+			<div class="meta">
+			    <span class="cinema">IFC Cinema</span>
+			</div>
+			<div class="description">
+			    <p> <%= j.description %> </p>
+			</div>
+			<div class="extra">
+			    <div class="ui right floated primary button">
+				Buy tickets
+				<i class="right chevron icon"></i>
+			    </div>
+			    <div class="ui label">Limited</div>
+			</div>
+		    </div>
+		</div>
+	    <% end %>
+	    
+	</div>
+	
+    </div>
+</div>
+   

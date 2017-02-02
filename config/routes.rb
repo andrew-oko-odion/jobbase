@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'dashboard/index'
+  resources :jobs 
+  resources :dashboard
 
   root 'welcome#index'
   
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   #get 'welcome/show'
 
   #get 'welcome/apply'
+  mount MailyHerald::Webui::Engine => "/maily_webui"
 
   devise_for :employers
   devise_for :jobseekers

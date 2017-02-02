@@ -1,0 +1,23 @@
+<div class="ui container">
+    <div class="ui text menu">
+	<div class="right menu">
+
+<% if employer_signed_in? %>
+		Logged in as <strong><%= current_employer.email %></strong>
+		<%= link_to 'Edit profile', edit_employer_registration_path, class: 'item' %> 
+		<%= link_to "Logout", destroy_employer_session_path, method: :delete, :class => 'item'  %>
+		 
+	    <% else %>
+	    <%= link_to "Login", new_employer_session_path, class: 'item'  %>
+	    <div class="item">
+		<button class="ui small basic primary button">
+		    <%= link_to "Sign up", new_employer_registration_path %> 
+		</button>
+	    </div>
+	    <% end  %>
+	    
+	    
+	</div>
+    </div>
+</div>
+   

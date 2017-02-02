@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127073221) do
+ActiveRecord::Schema.define(version: 20170201195513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "jobseeker_id"
+    t.boolean  "apply"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["job_id"], name: "index_applications_on_job_id", using: :btree
+    t.index ["jobseeker_id"], name: "index_applications_on_jobseeker_id", using: :btree
+  end
 
   create_table "employers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -30,6 +40,43 @@ ActiveRecord::Schema.define(version: 20170127073221) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_employers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_employers_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "job_categories", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_types", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "title"
+    t.date     "close_date"
+    t.text     "description"
+    t.decimal  "salary"
+    t.string   "location"
+    t.string   "application_email"
+    t.string   "company_name"
+    t.string   "company_email"
+    t.string   "company_website"
+    t.string   "company_address"
+    t.text     "about_company"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "jobtype_id"
+    t.integer  "job_category_id"
+    t.index ["application_email"], name: "index_jobs_on_application_email", using: :btree
+    t.index ["company_name"], name: "index_jobs_on_company_name", using: :btree
+    t.index ["job_category_id"], name: "index_jobs_on_job_category_id", using: :btree
+    t.index ["jobtype_id"], name: "index_jobs_on_jobtype_id", using: :btree
+    t.index ["title"], name: "index_jobs_on_title", using: :btree
   end
 
   create_table "jobseekers", force: :cascade do |t|
@@ -49,4 +96,55 @@ ActiveRecord::Schema.define(version: 20170127073221) do
     t.index ["reset_password_token"], name: "index_jobseekers_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "maily_herald_dispatches", force: :cascade do |t|
+    t.string   "type",                                       null: false
+    t.integer  "sequence_id"
+    t.integer  "list_id",                                    null: false
+    t.text     "conditions"
+    t.text     "start_at"
+    t.string   "mailer_name"
+    t.string   "name",                                       null: false
+    t.string   "title"
+    t.string   "subject"
+    t.string   "from"
+    t.string   "state",                 default: "disabled"
+    t.text     "template"
+    t.integer  "absolute_delay"
+    t.integer  "period"
+    t.boolean  "override_subscription"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["name"], name: "index_maily_herald_dispatches_on_name", unique: true, using: :btree
+  end
+
+  create_table "maily_herald_lists", force: :cascade do |t|
+    t.string "name",         null: false
+    t.string "title"
+    t.string "context_name"
+  end
+
+  create_table "maily_herald_logs", force: :cascade do |t|
+    t.integer  "entity_id",     null: false
+    t.string   "entity_type",   null: false
+    t.string   "entity_email"
+    t.integer  "mailing_id"
+    t.string   "status",        null: false
+    t.text     "data"
+    t.datetime "processing_at"
+  end
+
+  create_table "maily_herald_subscriptions", force: :cascade do |t|
+    t.integer  "entity_id",                    null: false
+    t.integer  "list_id",                      null: false
+    t.string   "entity_type",                  null: false
+    t.string   "token",                        null: false
+    t.text     "settings"
+    t.text     "data"
+    t.boolean  "active",       default: false, null: false
+    t.datetime "delivered_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_foreign_key "applications", "jobseekers"
 end
