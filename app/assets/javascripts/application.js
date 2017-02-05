@@ -15,3 +15,8 @@
 //= require turbolinks
 //= require_tree .
 //= require semantic-ui
+//= require social-share-button
+
+$("#headernav .item").on('click', function(){
+    $(this).addClass('active');
+});

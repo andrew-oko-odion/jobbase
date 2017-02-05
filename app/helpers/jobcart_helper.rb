@@ -1,0 +1,2 @@
+module JobcartHelper
+end

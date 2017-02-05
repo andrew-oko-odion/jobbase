@@ -1,6 +1,7 @@
+<div class="ui text container">
 <h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<div class="ui form">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -9,8 +10,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "Send me reset password instructions", class: 'ui violet button' %>
   </div>
-<% end %>
-
+  <% end %>
+</div>
 <%= render "jobseekers/shared/links" %>
+</div>

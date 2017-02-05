@@ -1,0 +1,85 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "semantic-ui";
+@import "social-share-button";
+
+/* Social share button */
+$size: 80px;
+.social-share-button {
+    .ssb-icon {
+	background-size: $size $size;
+	height: $size;
+	width: $size;
+    }
+}
+
+
+body {
+    background-color: #FFFFFF;
+}
+.ui.menu .item img.logo {
+    margin-right: 1.5em;
+}
+.main.container {
+    margin-top: 7em;
+}
+.wireframe {
+    margin-top: 2em;
+}
+.ui.footer.segment {
+    margin: 5em 0em 0em;
+    padding: 5em 0em;
+}
+/* Adding support for sticky footer */
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.sticky-footer{
+    flex: 1
+}
+
+
+/* for stellar.js parallax scroll effects */
+.photo {
+    background-attachment: fixed;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    height: 450px;
+    position: relative;
+}
+.photo span {
+    bottom: 0;
+    color: white;
+    display: block;
+    left: 50%;
+    margin-left: -640px;
+    font-size: 38px;
+    padding: 10px;
+    position: absolute;
+    text-shadow: 0 2px 0 black, 0 0 10px black;
+    width: 1280px;
+}
+
+.winter {
+    background: url('winter.jpg');
+}
+.autumn {
+    background-image: url('autumn.jpg');
+}

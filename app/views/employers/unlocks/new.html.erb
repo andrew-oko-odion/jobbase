@@ -1,5 +1,6 @@
+<div class="ui text container">
 <h2>Resend unlock instructions</h2>
-
+<div class="ui form">
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
@@ -9,8 +10,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+    <%= f.submit "Resend unlock instructions", class: 'ui violet button' %>
   </div>
 <% end %>
-
+</div>
 <%= render "employers/shared/links" %>
+
+</div>

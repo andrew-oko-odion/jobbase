@@ -6,35 +6,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <style type="text/css">
-      body {
-      background-color: #FFFFFF;
-      }
-      .ui.menu .item img.logo {
-      margin-right: 1.5em;
-      }
-      .main.container {
-      margin-top: 7em;
-      }
-      .wireframe {
-      margin-top: 2em;
-      }
-      .ui.footer.segment {
-      margin: 5em 0em 0em;
-      padding: 5em 0em;
-      }
-     /* Adding support for sticky footer */
-      .site {
-         display: flex;
-         min-height: 100vh;
-         flex-direction: column;
-      }
 
-      .sticky-footer{
-      flex: 1
-      }
-     
-    </style>
+    <script>
+      $(function(){
+      $.stellar({
+      horizontalScrolling: false,
+      verticalOffset: 40
+      });
+      });
+    </script>
+
 
     
   </head>
@@ -42,9 +23,9 @@
   <body>
       <%= render 'layouts/header' %>
       <%= render 'layouts/flash_messages' %>
-      <div  class="ui container">
+      <!-- removed container here every page should decide that itself -->
 	<%= yield %>
-      </div>
+      
       <%= render 'layouts/footernav' %>
 
       <script>

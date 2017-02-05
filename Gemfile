@@ -4,6 +4,10 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+gem 'friendly_id', '~> 5.1.0'
+gem 'has_permalink'
+gem 'rest-client', '~> 2.0'
+gem 'social-share-button'
 gem 'activeresource', github: 'rails/activeresource', branch: 'master'
 gem 'cancan'
 gem 'devise'
@@ -11,6 +15,7 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'maily_herald-webui'
 gem 'maily_herald'
 gem 'will_paginate', '>= 3.1'
+gem 'gravtastic'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

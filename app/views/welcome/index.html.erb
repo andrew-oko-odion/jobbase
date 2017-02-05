@@ -1,15 +1,19 @@
-<div class="ui two column grid">
-    <div class="row">
-	<div class="column">
-	    <%= image_tag "job.jpeg" %>
-	</div>
-	<div class="column">
+<div class="ui fluid container">
+    <div class="ui one column grid">
+	<div class="row">
+	    <div class="column">
+		
+		<div class="photo winter" data-stellar-background-ratio="0.5"><span>Summer</span></div>
+		<div class="photo autumn" data-stellar-background-ratio="0.5"><span>Autumn</span></div>
+	    </div>
 	    
 	</div>
     </div>
 </div>
 
-<div class="row">
+<div class="ui container">
+<div class="row" id="jobs">
+    <%= render 'layouts/search' %>
     <div class="column">
 	<h2> New Jobs </h2>
 
@@ -30,7 +34,7 @@
 		</div>
 		<div class="extra">
 		    <div class="ui right floated primary button">
-			Buy tickets
+			View Details
 			<i class="right chevron icon"></i>
 		    </div>
 		</div>
@@ -39,7 +43,7 @@
 		<div class="item">
 		    <div class="content">
 			
-			<%= link_to j.title, class: 'header' %>
+			<%= link_to j.title, welcome_path(j), class: 'header' %>
 			
 			<div class="meta">
 			    <span class="cinema">IFC Cinema</span>
@@ -49,7 +53,7 @@
 			</div>
 			<div class="extra">
 			    <div class="ui right floated primary button">
-				Buy tickets
+				<%= link_to "View Details", welcome_path(j) %>
 				<i class="right chevron icon"></i>
 			    </div>
 			    <div class="ui label">Limited</div>
@@ -61,5 +65,7 @@
 	</div>
 	
     </div>
+</div>
+
 </div>
    

@@ -19,3 +19,4 @@
 /db/migrate/20170202061725_add_confirmable_to_devise.rb
 *~
 *.rb~
+*.erb#
