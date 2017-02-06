@@ -20,3 +20,8 @@
 $("#headernav .item").on('click', function(){
     $(this).addClass('active');
 });
+
+
+$('.ui.radio.checkbox')
+  .checkbox()
+;
