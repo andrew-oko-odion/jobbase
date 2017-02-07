@@ -1,9 +1,3 @@
-<script>
- $('.ui.radio.checkbox')
-     .checkbox()
- ;
-
-</script>
 
 <div class="ui text container">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -16,8 +10,8 @@
 		<%= f.text_field :firstname, autofocus: true, autocomplete: "on" %>
 	    </div>
 
-	    <div class="field">
-		<%= f.label :lastname %><br />
+	    <div class="field">	
+	<%= f.label :lastname %><br />
 		<%= f.text_field :lastname,  autocomplete: "on" %>
 	    </div>
 
@@ -84,3 +78,4 @@
     <%= link_to "Back", :back %>
 
 </div>
+

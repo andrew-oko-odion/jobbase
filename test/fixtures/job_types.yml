@@ -2,10 +2,8 @@
 
 one:
   title: MyString
-  active: false
-  belongs_to: 
+  hide: false
 
 two:
   title: MyString
-  active: false
-  belongs_to: 
+  hide: false

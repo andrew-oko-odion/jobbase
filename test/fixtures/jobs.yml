@@ -2,28 +2,22 @@
 
 one:
   title: MyString
-  close_date: 2017-01-31
+  job_types: one
+  job_categories: one
   description: MyText
   application_email: MyString
-  references: 
-  references: 
+  location: MyString
   company_name: MyString
-  company_email: MyString
-  company_website: MyString
-  salary: 9.99
-  company_address: MyString
-  about_company: MyText
+  closing_date: 2017-02-07 02:21:42
+  active: false
 
 two:
   title: MyString
-  close_date: 2017-01-31
+  job_types: two
+  job_categories: two
   description: MyText
   application_email: MyString
-  references: 
-  references: 
+  location: MyString
   company_name: MyString
-  company_email: MyString
-  company_website: MyString
-  salary: 9.99
-  company_address: MyString
-  about_company: MyText
+  closing_date: 2017-02-07 02:21:42
+  active: false

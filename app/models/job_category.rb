@@ -1,3 +1,3 @@
 class JobCategory < ApplicationRecord
-  belongs_to :job
+  has_one :job
 end

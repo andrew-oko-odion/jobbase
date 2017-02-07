@@ -1,5 +1,4 @@
 class Job < ApplicationRecord
-  belongs_to :employers
-  belongs_to :job_categories
-  belongs_to :job_types
+  belongs_to :job_type
+  belongs_to :job_category
 end
