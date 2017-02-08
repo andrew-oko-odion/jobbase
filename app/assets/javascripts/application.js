@@ -16,8 +16,14 @@
 //= require_tree .
 //= require semantic-ui
 //= require social-share-button
+//= require tether
 
-$("#headernav .item").on('click', function(){
+//= require skrollr
+//= require skrollr.ie
+//= require skrollr.menu
+//= require skrollr.stylesheets
+
+$("#headernav.item").on('click', function(){
     $(this).addClass('active');
 });
 

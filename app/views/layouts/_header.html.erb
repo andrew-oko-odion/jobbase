@@ -1,12 +1,12 @@
 
 <div class="ui container">
     <div class="ui fluid top text menu" id="headernav">
-	<div class="item">
-	    <%= image_tag "logo.jpeg" %>
-	</div>
+
+	  <%= link_to  image_tag("logo.jpeg") ,  root_path, class: 'item' %>
+
 	
 	<div class="right menu">
-	  <%= link_to 'Jobs', root_path + "#jobs", class: 'item active' %>
+	  <%= link_to 'Jobs', root_path + "#jobs", class: 'item' %>
 	    <%= link_to 'Internship', '#', class: 'item' %>
 	    <% if jobseeker_signed_in? %>
 		<%# image_tag current_jobseeker.gravatar_url %>
@@ -16,10 +16,10 @@
 		<%= link_to 'Employers', dashboard_index_path, class: 'item' %> 
 		<%= link_to "Login", new_jobseeker_session_path, class: 'item'  %>
 		<div class="item">
-		  <button class="ui small basic violet button">
-		    <i class="unlock alternate icon"></i>
+		    <div class="ui small basic violet button">
+			<i class="unlock alternate icon"></i>
 			<%= link_to "Sign up", new_jobseeker_registration_path %> 
-		    </button>
+		    </div>
 		</div>
 	    <% end  %>
 	</div>

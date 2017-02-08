@@ -80,6 +80,10 @@ test:
 #
 production:
   <<: *default
+  
   database: jobtest_production
+  #username: pgadmin
+  #host: localhost
+  #password: password
   username: jobtest
   password: <%= ENV['JOBTEST_DATABASE_PASSWORD'] %>

@@ -25,16 +25,6 @@ ActiveRecord::Schema.define(version: 20170207012142) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "applications", force: :cascade do |t|
-    t.integer  "job_id"
-    t.integer  "jobseeker_id"
-    t.boolean  "apply"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["job_id"], name: "index_applications_on_job_id", using: :btree
-    t.index ["jobseeker_id"], name: "index_applications_on_jobseeker_id", using: :btree
-  end
-
   create_table "employers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -52,8 +42,26 @@ ActiveRecord::Schema.define(version: 20170207012142) do
     t.index ["reset_password_token"], name: "index_employers_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "job_categories", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "hide",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_job_categories_on_title", using: :btree
+  end
+
+  create_table "job_types", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "hide",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_job_types_on_title", using: :btree
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
+    t.integer  "job_types_id"
+    t.integer  "job_categories_id"
     t.text     "description"
     t.string   "application_email"
     t.string   "location"
@@ -62,6 +70,8 @@ ActiveRecord::Schema.define(version: 20170207012142) do
     t.boolean  "active",            null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.index ["job_categories_id"], name: "index_jobs_on_job_categories_id", using: :btree
+    t.index ["job_types_id"], name: "index_jobs_on_job_types_id", using: :btree
     t.index ["title"], name: "index_jobs_on_title", using: :btree
   end
 
@@ -140,5 +150,6 @@ ActiveRecord::Schema.define(version: 20170207012142) do
     t.datetime "updated_at"
   end
 
-  add_foreign_key "applications", "jobseekers"
+  add_foreign_key "jobs", "job_categories", column: "job_categories_id"
+  add_foreign_key "jobs", "job_types", column: "job_types_id"
 end

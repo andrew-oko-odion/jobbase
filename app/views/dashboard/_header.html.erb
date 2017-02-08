@@ -10,9 +10,10 @@
 	    <% else %>
 	    <%= link_to "Login", new_employer_session_path, class: 'item'  %>
 	    <div class="item">
-		<button class="ui small basic primary button">
-		    <%= link_to "Sign up", new_employer_registration_path %> 
-		</button>
+	      <div class="ui small basic primary button">
+		<i class="unlock alternate icon"></i>
+		<%= link_to "Sign up", new_employer_registration_path %> 
+		</div>
 	    </div>
 	    <% end  %>
 	    
