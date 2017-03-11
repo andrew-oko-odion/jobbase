@@ -31,3 +31,23 @@ $("#headernav.item").on('click', function(){
 $('.ui.radio.checkbox')
   .checkbox()
 ;
+
+$('.ui .dropdown')
+  .dropdown({
+    direction: 'downward'
+  })
+;
+
+// $( document ).ready(function() {
+    
+    // hide spinner
+   //  $(".loader").hide();
+
+    $(document).on("page:fetch", function(){
+	$(".loader").show();
+    });
+    $(document).on("page:receive", function(){
+	$(".loader").hide();
+    });
+    
+// });

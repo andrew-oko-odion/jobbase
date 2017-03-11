@@ -2,35 +2,35 @@
 
 Jobtest is a rails application for a clean and simple to manage Jobboard.
 
-* Features
+# Features
 
-  * Employers bashboard 
-  * Employers can post a job 
-  * Employers can make payment for each job post
-  * Employers can add more than on job to cart before makiing payment
+* Employers bashboard 
+* Employers can post a job 
+* Employers can make payment for each job post
+* Employers can add more than on job to cart before makiing payment
   
-		* Applicant Dashboard
-		   Applicants can View a list of Jobs in the index page of the application
-	  **** Applicants and view the full details of each job types on the list on the index page --- Job Details page 
+* Applicant Dashboard
+* Applicants can View a list of Jobs in the index page of the application
+* Applicants and view the full details of each job types on the list on the index page --- Job Details page 
   
 
-* Ruby version
+# Ruby version
   2.2.3
   
-* System dependencies
+# System dependencies
   Rails 5.0.1
   
-* Configuration
+# Configuration
   
-* Database creation
+# Database creation
   
   Requires Postgresql 
   
-* Database initialization
+# Database initialization
   
-* How to run the test suite
+# How to run the test suite
 
-* Deployment instructions
+# Deployment instructions
   
   Run Migration 
   
@@ -40,3 +40,4 @@ Jobtest is a rails application for a clean and simple to manage Jobboard.
   Then server 
   
   bin/rails server 
+

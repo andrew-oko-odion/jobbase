@@ -8,56 +8,52 @@
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 	<style>
-	    
-	/* Adding support for sticky footer */
-	.site {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-	}
+	 
+	 /* Adding support for sticky footer */
+	 .site {
+             display: flex;
+             min-height: 100vh;
+             flex-direction: column;
+	 }
 
-	.sticky-footer{
-	flex: 1
-	}
-	
-    </style>
-
+	 .sticky-footer{
+	     flex: 1
+	 }
+	</style>
     </head>
-
     <body>
-	<div class="ui fluid container ">
-	    <%= render 'dashboard/header' %>
-	    <% if employer_signed_in? %>
-		<div class="ui bottom attached segment pushable">
-		    <div class="ui visible inverted left vertical sidebar menu">
-			<a class="item">
-			    <i class="home icon"></i>
-			    Home
-			</a>
-			<a class="item">
-			    <i class="block layout icon"></i>
-			    Topics
-			</a>
-			<a class="item">
-			    <i class="smile icon"></i>
-			    Friends
-			</a>
-			<a class="item">
-			    <i class="calendar icon"></i>
-			    History
-			</a>
-			<div class="item">
-			    <a href="dashboard/post"> Post </a>
-			</div>
-		    </div>
-		    <div class="pusher">
-			<div class="ui container">
-			    <%= yield %>
-			</div>
-		    </div>
+	<div class="ui fluid container">
+	  <%= render 'dashboard/header' %>
+	  <% unless employer_signed_in? %>
+	  <%= render 'dashboard/employer_landing' %>
+	  <% end %>
+	<% if employer_signed_in? %>
+	    <div class="ui inverted vertical sticky menu" style="float:left; height: 600px; border-rauis: 0;">
+		<a class="item">
+		    <i class="home icon"></i>
+		    Active Jobs
+		</a>
+		<a class="item">
+		    <i class="block layout icon"></i>
+		    Jobs Posted
+		</a>
+		<a class="item">
+		    <i class="smile icon"></i>
+		    Applications
+		</a>
+		<a class="item">
+		    <i class="calendar icon"></i>
+		    History and me 
+		</a>
+		<div class="item">
+		    <a href="dashboard/post"> Post </a>
 		</div>
-		
-	    <% end %> 	    
+	    </div>
+	    <div class="ui fluid container" style="padding-left: 250px; padding-right: 40px;">
+		<%= yield %>
+	    </div>
+	</div>
+	<% end %> 	    
 	</div>
 	<script>
 	 // Side navigation dashboard 
@@ -74,9 +70,7 @@
 		 ;
 	     })
 	 ;
-	 
-	</script>
-	
+	</script>	
     </body>
 </html>
 

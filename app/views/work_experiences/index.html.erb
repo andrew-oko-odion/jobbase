@@ -1,0 +1,25 @@
+<script >
+ $('#edit_popup')
+     .popup()
+ ;
+</script>
+
+
+<div class="ui container">
+    <%= link_to 'Add Work Experience', new_work_experience_path, class: 'ui basic violet left floated button' %>
+    <div class="ui text container">
+	<h1>Work Experience Summary </h1>
+
+	<% @workexperiences.each do |work| %>
+	    <%= link_to raw('<i class="edit icon"></i>') + 'edit', edit_work_experience_path(work.id), class: "ui right floated basic violet small compact  button", id: 'edit_popup', :'data-content' => "Edit" %>
+	    <%= link_to raw('<i class="trash outline icon"></i>'), work_experience_path(work), method: :delete, class: "ui right floated basic violet small compact  button", data: {:confirm => 'Are you Sure'} %>
+	    <h3> <%= work.company_name %> </h3> </br>
+	    
+	    <%= work.company_website %> </br>
+	    <%= work.job_title %> </br>
+	    <%= work.about_role %> From: <%= work.start_date %> To: <%= work.end_date %></br>
+	    <div class="ui divider">
+	    </div>  	    
+	<% end %>
+    </div>
+</div>

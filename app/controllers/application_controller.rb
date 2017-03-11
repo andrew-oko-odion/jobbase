@@ -3,14 +3,10 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    resource.is_a?(Employer) ? dashboard_index_path : root_path
-  end
-
-  def home
+    resource.is_a?(Employer) ? dashboard_index_path : root_path 
   end
 
   protected
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :email, :password,  :is_female, :date_of_birth])
     devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :email, :password, :current_password, :is_female, :date_of_birth])

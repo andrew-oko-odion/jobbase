@@ -1,34 +1,33 @@
 
-
-<div class="ui text container">
     <div style="float: right"> <%= social_share_button_tag(@job.title) %> </div>
     <h1>Job Details</h1>
     
-<h2> <%= @job.title  %> </h2>
-<div class="ui divider"> </div>
-<div class="ui header">
-    Location
-</div>
-<%= @job.location %>
-<div class="ui header">
-    Salary Per Anual
-</div>
+    <h2> <%= @job.title  %> </h2>
+    <div class="ui divider"> </div>
+    <div class="ui header">
+	Location
+    </div>
+    <%= @job.location %>
+    <div class="ui header">
+	Salary Per Anual
+    </div>
 
-<%= @job.salary %>
+    <%# @job.salary %>
 
-<div class="ui header">
-    Job Description 
-</div>
-<%= @job.description %>
+    <div class="ui header">
+	Job Description 
+    </div>
+    <%= @job.description %>
+    <%# @applications.inspect %>
 
-</div>
-
-<div style="float: right;">
-    <button class="ui violet button">
-	Apply
-    </button>
-</div>
+    <%= form_for :applications, url: applications_path, remote: true do |f|  %>
+	<%# f.hidden_field :jobseeker_id, value: current_jobseeker.id %>
+      	<%= f.hidden_field :job_id, value: @job.id  %>
+	<%= f.submit 'Apply', id: 'apply', class: 'ui violet right floated button' %>
+    <% end %>
 
 
-  
+
+
+
 

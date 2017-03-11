@@ -7,5 +7,9 @@ class Jobseeker < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable # :confirmable
 
- 
+  has_many :education
+  has_many :work_experience
+  has_many :associate
+  has_many :application
+  has_many :about
 end

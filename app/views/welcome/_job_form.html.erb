@@ -1,0 +1,57 @@
+<div class="ui form">
+    <%= form_for :job, url: { action: "create" } do |f| %>
+	<div class="field">
+	    <%= f.label :Job_Title %>
+	    <%= f.text_field :title, placeholder: " example `Software Developer`", autofocus: true %>
+	</div>
+	
+	<div class="inline fields">
+	<div class="field">
+	    <%= f.label :Job_Type %>
+	    <%= f.text_field :job_type_id %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :Job_Category %>
+	    <%= f.text_field :job_category_id %>
+	</div>
+	</div>
+	
+	<div class="field">
+	    <%= f.label :Location%>
+	    <%= f.text_field :location %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :Application_Email %>
+	    <%= f.text_field :application_email %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :Company_name %>
+	    <%= f.text_field :company_name %>
+	</div>
+
+	<div class="inline field">
+	    <%= f.label :Closing_date %>
+	    <%= f.date_select :closing_date %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :Salary_Per_Annul %>
+	    <%= f.text_field :salary %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :Job_Description %>
+	    <%= f.text_area :description %>
+	</div>
+
+	<%= f.hidden_field :employer_id %>
+
+	<div class="field">
+	    <%= f.submit 'Post', class: 'ui violet button' %>
+	</div>
+
+    <% end %>
+</div>

@@ -1,0 +1,6 @@
+ <%= form_for :applications, url: applications_path do |f|  %>
+     <%= f.text_field :jobseekers_id %> <%#, value: current_jobseeker.id %>
+      	<%= f.text_field :jobs_id %> <%#, value: @job.id  %>
+	<%# f.text_field :jobs_id %>
+	<%= f.submit id: 'apply', class: 'ui violet right floated button' onClick: 'apply'%>
+    <% end %>

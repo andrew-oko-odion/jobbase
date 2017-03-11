@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jobtest</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script>
+      $(function(){
+      $.stellar({
+      horizontalScrolling: false,
+      verticalOffset: 80
+      });
+      });
+    </script>
+
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/flash_messages' %>
+    <%= render 'welcome/landing_segment' unless current_jobseeker %> 
+    <!-- removed container here every page should decide that itself -->    
+      <div class="ui three column relaxed grid fluid container">
+	   <div class="four wide column">
+	      <%= render 'layouts/jobseeker_vertical_side_menu' if  current_jobseeker %>
+	     </div>
+	   
+	  <div class="eight wide column">
+	      <div class="ui active centered inline loader"></div>
+	      <%= yield %>
+	  </div>
+	  <div class="four wide column" >
+	      <%= render 'layouts/right_pannel' %>
+	  </div>
+      </div>
+      <%= render 'layouts/footernav' %>
+     
+      <script>
+	$('.message .close')
+	.on('click', function() {
+	$(this)
+	.closest('.message')
+	.transition('fade')
+	;
+	})
+	;
+      </script>
+  </body>
+</html>

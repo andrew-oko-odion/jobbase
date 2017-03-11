@@ -12,7 +12,6 @@ module Jobtest
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.action_mailer.default_options = { from: "hello@mailyherald.org" }
-config.action_mailer.default_url_options = { host: "mailyherald.org" }
-
+    config.action_mailer.default_url_options = { host: "mailyherald.org" }
   end
 end

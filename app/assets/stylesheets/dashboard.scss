@@ -1,3 +1,15 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Adding support for sticky footer */
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.sticky-footer{
+    flex: 1
+}

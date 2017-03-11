@@ -1,3 +1,3 @@
 class JobType < ApplicationRecord
-    has_one :job
+    has_many :job
 end

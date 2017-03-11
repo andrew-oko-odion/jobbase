@@ -4,13 +4,19 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-gem 'skrollr-rails'
+
+gem 'ahoy_matey'  # Analytics 
+gem 'ahoy_email'  # Mails
+gem 'mailkick'    # Handles unsubscribe
+
+gem 'mechanize', '~> 2.7', '>= 2.7.3' # Scrapping 
+gem 'skrollr-rails' 
 gem 'tether-rails'
 gem 'friendly_id', '~> 5.1.0'
 gem 'has_permalink'
-gem 'rest-client', '~> 2.0'
+gem 'rest-client', '~> 2.0'      # REST consuming 
 gem 'social-share-button'
-gem 'activeresource', github: 'rails/activeresource', branch: 'master'
+# gem 'activeresource', github: 'rails/activeresource', branch: 'master'
 gem 'cancan'
 gem 'devise'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
@@ -24,7 +30,7 @@ gem 'rails', '~> 5.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.7.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

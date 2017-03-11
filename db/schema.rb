@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207012142) do
+ActiveRecord::Schema.define(version: 20170308170320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,80 @@ ActiveRecord::Schema.define(version: 20170207012142) do
     t.text     "about"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "abouts", force: :cascade do |t|
+    t.text     "about"
+    t.integer  "jobseeker_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["jobseeker_id"], name: "index_abouts_on_jobseeker_id", using: :btree
+  end
+
+  create_table "ahoy_events", force: :cascade do |t|
+    t.integer  "visit_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "properties"
+    t.datetime "time"
+    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time", using: :btree
+    t.index ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name", using: :btree
+    t.index ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name", using: :btree
+  end
+
+  create_table "ahoy_messages", force: :cascade do |t|
+    t.string   "token"
+    t.text     "to"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "mailer"
+    t.text     "subject"
+    t.datetime "sent_at"
+    t.datetime "opened_at"
+    t.datetime "clicked_at"
+    t.index ["token"], name: "index_ahoy_messages_on_token", using: :btree
+    t.index ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type", using: :btree
+  end
+
+  create_table "applications", force: :cascade do |t|
+    t.integer  "jobseeker_id"
+    t.integer  "job_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["job_id"], name: "index_applications_on_job_id", using: :btree
+    t.index ["jobseeker_id"], name: "index_applications_on_jobseeker_id", using: :btree
+  end
+
+  create_table "associates", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "website"
+    t.integer  "jobseeker_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["jobseeker_id"], name: "index_associates_on_jobseeker_id", using: :btree
+  end
+
+  create_table "education_types", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.string   "certificate_title"
+    t.string   "school_name"
+    t.string   "school_website"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "education_type_id"
+    t.integer  "jobseeker_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["education_type_id"], name: "index_educations_on_education_type_id", using: :btree
+    t.index ["jobseeker_id"], name: "index_educations_on_jobseeker_id", using: :btree
   end
 
   create_table "employers", force: :cascade do |t|
@@ -44,7 +118,7 @@ ActiveRecord::Schema.define(version: 20170207012142) do
 
   create_table "job_categories", force: :cascade do |t|
     t.string   "title"
-    t.boolean  "hide",       null: false
+    t.boolean  "hide"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_job_categories_on_title", using: :btree
@@ -52,7 +126,7 @@ ActiveRecord::Schema.define(version: 20170207012142) do
 
   create_table "job_types", force: :cascade do |t|
     t.string   "title"
-    t.boolean  "hide",       null: false
+    t.boolean  "hide"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_job_types_on_title", using: :btree
@@ -60,18 +134,21 @@ ActiveRecord::Schema.define(version: 20170207012142) do
 
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
-    t.integer  "job_types_id"
-    t.integer  "job_categories_id"
+    t.integer  "job_type_id"
+    t.integer  "job_category_id"
     t.text     "description"
     t.string   "application_email"
     t.string   "location"
     t.string   "company_name"
     t.datetime "closing_date"
-    t.boolean  "active",            null: false
+    t.boolean  "active"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["job_categories_id"], name: "index_jobs_on_job_categories_id", using: :btree
-    t.index ["job_types_id"], name: "index_jobs_on_job_types_id", using: :btree
+    t.decimal  "salary"
+    t.integer  "employer_id"
+    t.index ["employer_id"], name: "index_jobs_on_employer_id", using: :btree
+    t.index ["job_category_id"], name: "index_jobs_on_job_category_id", using: :btree
+    t.index ["job_type_id"], name: "index_jobs_on_job_type_id", using: :btree
     t.index ["title"], name: "index_jobs_on_title", using: :btree
   end
 
@@ -95,9 +172,24 @@ ActiveRecord::Schema.define(version: 20170207012142) do
     t.string   "lastname"
     t.boolean  "is_female",              default: false
     t.datetime "date_of_birth"
+    t.text     "about"
+    t.boolean  "married"
     t.index ["confirmation_token"], name: "index_jobseekers_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_jobseekers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_jobseekers_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "mailkick_opt_outs", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.boolean  "active",     default: true, null: false
+    t.string   "reason"
+    t.string   "list"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["email"], name: "index_mailkick_opt_outs_on_email", using: :btree
+    t.index ["user_id", "user_type"], name: "index_mailkick_opt_outs_on_user_id_and_user_type", using: :btree
   end
 
   create_table "maily_herald_dispatches", force: :cascade do |t|
@@ -150,6 +242,56 @@ ActiveRecord::Schema.define(version: 20170207012142) do
     t.datetime "updated_at"
   end
 
-  add_foreign_key "jobs", "job_categories", column: "job_categories_id"
-  add_foreign_key "jobs", "job_types", column: "job_types_id"
+  create_table "visits", force: :cascade do |t|
+    t.string   "visit_token"
+    t.string   "visitor_token"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "landing_page"
+    t.integer  "user_id"
+    t.string   "referring_domain"
+    t.string   "search_keyword"
+    t.string   "browser"
+    t.string   "os"
+    t.string   "device_type"
+    t.integer  "screen_height"
+    t.integer  "screen_width"
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
+    t.string   "postal_code"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "utm_source"
+    t.string   "utm_medium"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.string   "utm_campaign"
+    t.datetime "started_at"
+    t.index ["user_id"], name: "index_visits_on_user_id", using: :btree
+    t.index ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
+  end
+
+  create_table "work_experiences", force: :cascade do |t|
+    t.string   "company_name"
+    t.string   "job_title"
+    t.text     "about_role"
+    t.string   "company_website"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "jobseeker_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["jobseeker_id"], name: "index_work_experiences_on_jobseeker_id", using: :btree
+  end
+
+  add_foreign_key "abouts", "jobseekers"
+  add_foreign_key "applications", "jobs"
+  add_foreign_key "applications", "jobseekers"
+  add_foreign_key "associates", "jobseekers"
+  add_foreign_key "educations", "education_types"
+  add_foreign_key "educations", "jobseekers"
+  add_foreign_key "jobs", "employers"
+  add_foreign_key "work_experiences", "jobseekers"
 end

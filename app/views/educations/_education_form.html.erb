@@ -1,0 +1,42 @@
+<div class="ui form">
+	<%= form_for @education  do |f| %>
+	    <div class="field">
+		<%= f.label 'Education Type' %>
+		<%= f.text_field :education_type_id, autofocus: true  %> 
+	    </div>
+	    <div class="field">
+		<%= f.label :School_Name %> 
+		<%= f.text_field :school_name, placeholder: "example `University of Benin` " %>
+	    </div>
+	    <div class="field">
+		<%= f.label :Certificate_Name %>
+		<%= f.text_field :certificate_title, placeholder: "example `Bachelor of Science` " %>
+	    </div>
+	    
+	    <div class="inline fields">
+		<div class="inline field">
+		    <%= f.label 'Start Date' %> 
+		    <%= f.date_select :start_date, discard_day: true, end_year: 1930, start_year: Date.today.year %> 
+		</div>
+		<div class="inline field">
+		    <%= f.label 'End Date' %>
+		    <%= f.date_select :end_date, discard_day: true, end_year: 1930, start_year: Date.today.year %>
+		</div>
+	    </div>
+	    
+	    <div class="field">
+		<%= f.label :School_Website %>
+		<%= f.url_field :school_website, placeholder: "example `http://school.com` " %>
+	    </div>
+
+	    <%= f.hidden_field :jobseeker_id, value: current_jobseeker.id %>
+	    <div class="inline fields">
+		<div class="field">
+		    <%= f.submit 'Update Education', class: 'ui violet button' %>
+		</div>
+		<div class="field">
+	            <%= link_to raw('<i class="undo icon"></i>') + 'Cancel', educations_path, class: 'ui right floated orange button' %>
+		</div>
+	    </div>
+	<% end %>
+    </div>

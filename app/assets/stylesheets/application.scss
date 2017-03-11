@@ -29,12 +29,37 @@ $size: 80px;
     }
 }
 
+.grid.column.relaxed {
+        margin-top: 40px
+}
+
+.eight.column.wide {
+        background-color: #FFFFFF;
+        margin-top: 13px;
+}
+
+#suggest {
+ background-color: #FFFFFF;
+ padding : 30px;
+}
+
+#header {
+background-color: #FFFFFF;
+}
+
+#vertical_menu {
+background-color: #FFFFFF;
+}
 
 body {
-    background-color: #FFFFFF;
+        /* background-color: #FFFFFF; */
+         background-color: #E8E8E8; 
+        /* background-color: #E9EBEE; */
 }
+
 .ui.menu .item img.logo {
     margin-right: 1.5em;
+
 }
 .main.container {
     margin-top: 7em;
@@ -62,7 +87,7 @@ body {
 .photo {
     background-attachment: fixed;
     background-position: 50% 0;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     height: 450px;
     position: relative;
 }
@@ -70,7 +95,7 @@ body {
     bottom: 0;
     color: white;
     display: block;
-    left: 50%;
+    left: 50%; 
     margin-left: -640px;
     font-size: 38px;
     padding: 10px;
@@ -80,8 +105,8 @@ body {
 }
 
 .winter {
-    background: url('winter.jpg');
+    background: url('background.jpg');
 }
 .autumn {
-    background-image: url('autumn.jpg');
+    background-image: url('winter.jpg');
 }

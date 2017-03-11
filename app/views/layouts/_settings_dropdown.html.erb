@@ -1,0 +1,40 @@
+<!-- <div class="item" data-tooltip="update settings" data-position="bottom right">  -->
+<div class="ui floating labeled icon dropdown" >
+    Settings
+    <i class="angle down  icon"></i>
+    <div class="menu">
+	<div class="header">
+	    <%= current_jobseeker.firstname %>
+	    <div class="ui divider"></div>
+	</div>
+	<div class="item">
+
+	    <%= link_to 'education details', educations_path %>
+	</div>
+	<div class="item">
+
+	    <%= link_to 'work experience', work_experiences_path %>
+	</div>
+	<div class="divider"></div>
+
+	<div class="item">
+
+	    <%= link_to 'profile', edit_jobseeker_registration_path %>
+	</div>
+	
+	<div class="item">
+
+	    <%= link_to 'logout', destroy_jobseeker_session_path, method: :delete  %>
+	</div>
+    </div>    
+</div>
+
+<!--  </div> -->
+
+<script>
+  $('.ui .dropdown')
+  .dropdown({
+      direction: 'downward'
+  })
+;
+  </script>
