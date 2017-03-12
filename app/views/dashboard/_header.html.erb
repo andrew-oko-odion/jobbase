@@ -1,30 +1,26 @@
 <div class="ui container">
-  <div class="ui text menu">
-      <div class="item">
-	  Employer
+    <div class="ui text menu">
+	<%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
+	<%= link_to "JobBoard",  root_path, class: 'item' %>
+      <div class="right menu">
+	  <% if employer_signed_in? %>
+	      <!--  Logged in as <strong><%# current_employer.id %></strong> --> 
+	      <%= link_to 'Edit profile', edit_employer_registration_path, class: 'item' %> 
+	      <%= link_to "Logout", destroy_employer_session_path, method: :delete, :class => 'item'  %>
+	      <div class="item">
+		  <div class="ui icon input">
+		      <input placeholder="Search..." type="text">
+		      <i class="search icon"></i>
+		  </div>
+	      </div>
+	  <% else %>
+	      <%= link_to "Login", new_employer_session_path, class: 'item'  %>
+	      <div class="item">
+		  <%= link_to raw('<i class="unlock alternate icon"></i>') + "Sign up", new_employer_registration_path, class: "ui small basic primary button"%> 
+
+	      </div>
+	  <% end  %>    
       </div>
-	<div class="right menu">
-
-<% if employer_signed_in? %>
-    <!--  Logged in as <strong><%# current_employer.id %></strong> --> 
-		<%= link_to 'Edit profile', edit_employer_registration_path, class: 'item' %> 
-		<%= link_to "Logout", destroy_employer_session_path, method: :delete, :class => 'item'  %>
-    <div class="item">
-	<div class="ui icon input">
-	    <input placeholder="Search..." type="text">
-	    <i class="search icon"></i>
-	</div>
-    </div>
-	    <% else %>
-	    <%= link_to "Login", new_employer_session_path, class: 'item'  %>
-	    <div class="item">
-		<%= link_to raw('<i class="unlock alternate icon"></i>') + "Sign up", new_employer_registration_path, class: "ui small basic primary button"%> 
-
-	    </div>
-	    <% end  %>
-	    
-	    
-	</div>
-    </div>
+  </div>
 </div>
    
