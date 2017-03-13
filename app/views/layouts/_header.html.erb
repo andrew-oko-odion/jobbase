@@ -1,25 +1,32 @@
+<!-- Application Header for Jobseekers -->
 <div id="header" >
-<div class="ui container">
-    <div class="ui huge text menu " id="header hide-from-print" style="margin-top: 0px;">
-      <%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
-      <%= link_to "JobBoard",  root_path, class: 'item' %>
-      <div class="right menu">
-	    <% if jobseeker_signed_in? %>
-		<%# image_tag current_jobseeker.gravatar_url %>
-		<%# link_to 'Edit profile', edit_jobseeker_registration_path, class: 'item' %> 
-		<%# link_to "Logout", destroy_jobseeker_session_path, method: :delete, :class => 'item'  %>
-		<%= link_to 'Jobs', root_path + "#jobs", class: 'item' %>
-		<%= link_to 'Internship', '#', class: 'item' %>
-		<div class="item"> <%= render 'layouts/settings_dropdown' %></div>
+    <div class="ui container">
+	<div class="ui huge text menu " id="header hide-from-print" style="margin-top: 0px;">
+	    <%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
+	    <%= link_to "JobBoard",  root_path, class: 'item' %>
+	    <div class="right menu">
+		<% if jobseeker_signed_in? %>
+		    <div class="ui label item">
+			<i class="mail icon"></i> 23
+		    </div>
+		    <div class="ui label item">
+			<i class="mail icon"></i> 23
+		    </div>
+		    <%# image_tag current_jobseeker.gravatar_url %>
+		    <%# link_to 'Edit profile', edit_jobseeker_registration_path, class: 'item' %> 
+		    <%# link_to "Logout", destroy_jobseeker_session_path, method: :delete, :class => 'item'  %>
+		    <%= link_to 'Jobs', root_path + "#jobs", class: 'item' %>
+		    <%= link_to 'Internship', '#', class: 'item' %>
+		    <div class="item"> <%= render 'layouts/settings_dropdown' %></div>
 		<% else %>
-		<%= link_to 'Employers', dashboard_index_path, class: 'item' %>
-		<%= link_to "Login", new_jobseeker_session_path, class: 'item'  %>
-		<div class="item">
+		    <%= link_to 'Employers', dashboard_index_path, class: 'item' %>
+		    <%= link_to "Login", new_jobseeker_session_path, class: 'item'  %>
+		    <div class="item">
 			<%= link_to raw('<i class="unlock alternate icon"></i>') + "Sign up", new_jobseeker_registration_path, class: "ui small basic violet button" %> 
-		</div>
-	    <% end  %>
+		    </div>
+		<% end  %>
+	    </div>
 	</div>
     </div>
-</div>
 </div>
 
