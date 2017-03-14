@@ -1,0 +1,21 @@
+* successfully create post a  job
+
+
+* Post a job is an operation for employers but it belongs to welcome controller 
+  And the condition for showing the Jobseeker landing segment is that the person is not a jobseeker
+  Perfect time to use cancan
+  
+* Tasks for Today 14/03/2017 
+
+| Jobseeker (Frontend)                                        | Jobseeker (Backend)                                                  | Employer (Frontend)                                                | Employer (Backend)                                                | System (Backend)                      | System (Frontend) |
+|-------------------------------------------------------------+----------------------------------------------------------------------+--------------------------------------------------------------------+-------------------------------------------------------------------+---------------------------------------+-------------------|
+| Add Loader for each Click                                   | Create tags model OR use act_as_tag add it to post a job             | Change Layout to something like Jobseeker layout                   | Create Company Profile Summary                                    | Make Campaign Mailer to start working |                   |
+| Re-arrange Profile filling method                           | Using `Job` model filter for `Internship` do the same for `Jobs` too | Make `Loader` work for each click                                  |                                                                   |                                       |                   |
+| Use Dialog to view each Job Details using Dimmer and Dialog |                                                                      | Add Notifications to menu of total applications on active job      |                                                                   |                                       |                   |
+|                                                             |                                                                      | Compose View for each application                                  |                                                                   |                                       |                   |
+|                                                             |                                                                      | Use Dialog to show each Jobseekers Profile. with Buttons to Decide | Create Mailer for the 3 kind of buttons on each Jobseeker Profile |                                       |                   |
+
+
+
+
+
