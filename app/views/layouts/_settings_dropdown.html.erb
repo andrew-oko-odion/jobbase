@@ -1,31 +1,18 @@
 <!-- <div class="item" data-tooltip="update settings" data-position="bottom right">  -->
 <div class="ui floating labeled icon dropdown" >
     Settings
-    <i class="angle down  icon"></i>
+    <i class="angle down icon"></i>
     <div class="menu">
-	<div class="header">
+	<h5 class="blue header">
 	    <%= current_jobseeker.firstname %>
 	    <div class="ui divider"></div>
-	</div>
-	<div class="item">
-
-	    <%= link_to 'education details', educations_path %>
-	</div>
-	<div class="item">
-
-	    <%= link_to 'work experience', work_experiences_path %>
-	</div>
+	</h5>
+	<%= link_to 'education details', educations_path , class: 'item' %>
+	<%= link_to 'work experience', work_experiences_path, class: 'item' %>
 	<div class="divider"></div>
-
-	<div class="item">
-
-	    <%= link_to 'profile', edit_jobseeker_registration_path %>
-	</div>
+	<%= link_to 'profile', edit_jobseeker_registration_path, class: 'item' %>
+	<%= link_to 'logout', destroy_jobseeker_session_path, method: :delete, class: 'item'  %>
 	
-	<div class="item">
-
-	    <%= link_to 'logout', destroy_jobseeker_session_path, method: :delete  %>
-	</div>
     </div>    
 </div>
 

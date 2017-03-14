@@ -19,6 +19,17 @@
 @import 'tether'; 
 
 
+
+#message {
+    border-radius: 0;
+    min-width: 220px !important;
+    z-index: 4;
+    position: absolute;
+    right: 120px;
+    border-color: violet;
+}
+
+
 /* Social share button */
 $size: 80px;
 .social-share-button {
@@ -40,7 +51,7 @@ $size: 80px;
 
 #suggest {
  background-color: #FFFFFF;
- padding : 30px;
+ padding : 25px;
 }
 
 #header {
@@ -53,8 +64,8 @@ background-color: #FFFFFF;
 
 body {
         /* background-color: #FFFFFF; */
-         background-color: #E8E8E8; 
-        /* background-color: #E9EBEE; */
+    /* kground-color: #E8E8E8; */
+           background-color: #F9F9FA  
 }
 
 .ui.menu .item img.logo {
@@ -74,7 +85,7 @@ body {
 /* Adding support for sticky footer */
 .site {
     display: flex;
-    min-height: 100vh;
+    min-height: 200vh;
     flex-direction: column;
 }
 
@@ -110,3 +121,32 @@ body {
 .autumn {
     background-image: url('winter.jpg');
 }
+
+
+.apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #aaaaaa; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }

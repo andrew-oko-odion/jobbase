@@ -23,6 +23,15 @@
 //= require skrollr.menu
 //= require skrollr.stylesheets
 
+/* drop down setting */
+  $('.ui .dropdown')
+  .dropdown({
+      direction: 'downward'
+  })
+;
+
+
+
 $("#headernav.item").on('click', function(){
     $(this).addClass('active');
 });

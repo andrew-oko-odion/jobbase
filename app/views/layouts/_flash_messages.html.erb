@@ -1,21 +1,24 @@
 <% if !flash[:notice].blank? || !flash[:error].blank? %>
-<div class="ui container">
-<div style="float:right;">
-    <div class="ui floating  message" style="border-radius: 0; min-width: 220px !important; z-index: 4; position: absolute; right: 120px; border-color: violet;"><i class="close icon"></i>
-	<div class="content">
-    <i class=" green checkmark icon"></i>
-    <%= flash[:notice] %> <%= flash[:error] %>
+	<div style="float:right;">
+	    <div class="ui floating  message" id="message">
+		    <i class="close icon" style="float: right; padding-right: 30px"></i>
+		<div class="content">
+		    <div style="float: left;">
+			<i class=" green checkmark icon"></i>
+		    </div>
+		    <div style="padding-left: 10px;">
+			<%= flash[:notice] %> <%= flash[:error] %>
+		    </div>
+		</div>
+	    </div>
 	</div>
-</div>
-
-</div>
-
-
-<script>
- $('.message.floating')
-     .transition('scale in')
- ;
-</script>
-
+	
+	
+	<script>
+	 $('.message.floating')
+	     .transition('scale in')
+	 ;
+	</script>
+	
 <% end %>
 

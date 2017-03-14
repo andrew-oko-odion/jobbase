@@ -23,37 +23,38 @@
     </head>
     <body>
 	<div class="ui fluid container">
-	  <%= render 'dashboard/header' %>
-	  <% unless employer_signed_in? %>
-	  <%= render 'dashboard/employer_landing' %>
-	  <% end %>
-	<% if employer_signed_in? %>
-	    <div class="ui inverted vertical sticky menu" style="float:left; height: 600px; border-rauis: 0;">
-		<a class="item">
-		    <i class="home icon"></i>
-		    Active Jobs
-		</a>
-		<a class="item">
-		    <i class="block layout icon"></i>
-		    Jobs Posted
-		</a>
-		<a class="item">
-		    <i class="smile icon"></i>
-		    Applications
-		</a>
-		<a class="item">
-		    <i class="calendar icon"></i>
-		    History and me 
-		</a>
-		<div class="item">
-		    <a href="dashboard/post"> Post </a>
+	    <%= render 'dashboard/header' %>
+	    <% unless employer_signed_in? %>
+		<%= render 'dashboard/employer_landing' %>
+	    <% end %>
+	    <% if employer_signed_in? %>
+		<div class="ui inverted vertical sticky menu" style="float:left; height: 600px; border-rauis: 0;">
+		    <a class="item">
+			<i class="home icon"></i>
+			Active Jobs
+		    </a>
+		    <a class="item">
+			<i class="block layout icon"></i>
+			Jobs Posted
+		    </a>
+		    <a class="item">
+			<i class="smile icon"></i>
+			Applications
+		    </a>
+		    <a class="item">
+			<i class="calendar icon"></i>
+			History and me 
+		    </a>
+		    <div class="item">
+			<a href="dashboard/post"> Post </a>
+		    </div>
 		</div>
-	    </div>
-	    <div class="ui fluid container" style="padding-left: 250px; padding-right: 40px;">
-		<%= yield %>
-	    </div>
+		<div class="ui fluid container" style="padding-left: 250px; padding-right: 40px;">
+		    <%= yield %>
+		</div>
+		<%= render 'layouts/footernav' %>
 	</div>
-	<% end %> 	    
+	    <% end %> 	    
 	</div>
 	<script>
 	 // Side navigation dashboard 

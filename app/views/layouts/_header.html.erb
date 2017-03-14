@@ -1,17 +1,17 @@
 <!-- Application Header for Jobseekers -->
 <div id="header" >
     <div class="ui container">
-	<div class="ui huge text menu " id="header hide-from-print" style="margin-top: 0px;">
+	<div class="ui huge text menu " id="header" style="margin-top: 0px;">
 	    <%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
 	    <%= link_to "JobBoard",  root_path, class: 'item' %>
 	    <div class="right menu">
 		<% if jobseeker_signed_in? %>
-		    <div class="ui label item">
+		    <a class="ui label item">
+			<i class="world icon"></i> 23
+		    </a>
+		    <a class="ui label item">
 			<i class="mail icon"></i> 23
-		    </div>
-		    <div class="ui label item">
-			<i class="mail icon"></i> 23
-		    </div>
+		    </a>
 		    <%# image_tag current_jobseeker.gravatar_url %>
 		    <%# link_to 'Edit profile', edit_jobseeker_registration_path, class: 'item' %> 
 		    <%# link_to "Logout", destroy_jobseeker_session_path, method: :delete, :class => 'item'  %>
