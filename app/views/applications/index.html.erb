@@ -1,2 +1,5 @@
-<h1>Applications#index</h1>
-<p>Find me in app/views/applications/index.html.erb</p>
+<div class="ui container">
+    <% @jobs.each do |j|  %>
+	<br> <%= j.title %> </br>
+    <% end %>
+</div>

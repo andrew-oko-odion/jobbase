@@ -1,5 +1,5 @@
 <div class="ui form">
-    <%= form_for :job, url: { action: "create" }  do |f|  %>
+    <%= form_for :job, url: applications_path  do |f|  %>
 	<div class="field">
 	    <%= f.label :Job_Title %>
 	    <%= f.text_field :title, placeholder: " example `Software Developer`", autofocus: true %>

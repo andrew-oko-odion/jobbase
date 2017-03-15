@@ -17,15 +17,15 @@ class WelcomeController < ApplicationController
   end
 
   def create 
-    if @apply = Application.new(applications_params) && current_jobseeker 
-      @apply.save
+     @apply = Application.new(applications_params) #&& current_jobseeker 
+     if @apply.save
       flash[:notice] = 'Application sent Successfully'
       redirect_to welcome_index_path
-   else
+    else
       flash[:notice] = 'Please Login'
       redirect_to new_jobseeker_session_path 
-      end
-  #render plain: applications_params.inspect
+    end
+    #render plain: @apply.inspect
   end
   
   def set_cart_to_array
