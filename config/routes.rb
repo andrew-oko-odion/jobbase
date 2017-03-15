@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get 'jobcart/new'
 
   get 'jobcart/edit'
+  post "welcome/:id/" => "welcome#create" 
   resources :welcome
   resources :educations
   resources :applications

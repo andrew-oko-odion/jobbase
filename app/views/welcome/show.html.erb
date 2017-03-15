@@ -20,8 +20,8 @@
     <%= @job.description %>
     <%# @applications.inspect %>
 
-    <%= form_for :applications, url: applications_path, remote: true do |f|  %>
-	<%# f.hidden_field :jobseeker_id, value: current_jobseeker.id %>
+    <%= form_for :apply, url: welcome_path  do |f|  %>
+	<%= f.hidden_field :jobseeker_id, value: current_jobseeker.id %>
       	<%= f.hidden_field :job_id, value: @job.id  %>
 	<%= f.submit 'Apply', id: 'apply', class: 'ui violet right floated button' %>
     <% end %>
