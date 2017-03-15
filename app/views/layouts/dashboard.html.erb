@@ -6,56 +6,24 @@
 
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-	<style>
-	 
-	 /* Adding support for sticky footer */
-	 .site {
-             display: flex;
-             min-height: 100vh;
-             flex-direction: column;
-	 }
-
-	 .sticky-footer{
-	     flex: 1
-	 }
-	</style>
     </head>
     <body>
-	<div class="ui fluid container">
 	    <%= render 'dashboard/header' %>
 	    <% unless employer_signed_in? %>
 		<%= render 'dashboard/employer_landing' %>
 	    <% end %>
 	    <% if employer_signed_in? %>
-		<div class="ui inverted vertical sticky menu" style="float:left; height: 600px; border-rauis: 0;">
-		    <a class="item">
-			<i class="home icon"></i>
-			Active Jobs
-		    </a>
-		    <a class="item">
-			<i class="block layout icon"></i>
-			Jobs Posted
-		    </a>
-		    <a class="item">
-			<i class="smile icon"></i>
-			Applications
-		    </a>
-		    <a class="item">
-			<i class="calendar icon"></i>
-			History and me 
-		    </a>
-		    <div class="item">
-			<a href="dashboard/post"> Post </a>
+		<div class="ui two column relaxed stackable grid container">
+		    <div class="four wide column">
+			<%= render 'dashboard/employer_side_nav' %>
 		    </div>
-		</div>
-		<div class="ui fluid container" style="padding-left: 250px; padding-right: 40px;">
-		    <%= yield %>
+		    <div class="twelve wide column">
+			    <%= yield %>
+		    </div>
 		</div>
 		<%= render 'layouts/footernav' %>
 	</div>
 	    <% end %> 	    
-	</div>
 	<script>
 	 // Side navigation dashboard 
 	 $('.ui.sidebar')
@@ -69,6 +37,13 @@
 		     .closest('.message')
 		     .transition('fade')
 		 ;
+	     })
+	 ;
+
+
+	 $('.ui .dropdown')
+	     .dropdown({
+		 direction: 'downward'
 	     })
 	 ;
 	</script>	
