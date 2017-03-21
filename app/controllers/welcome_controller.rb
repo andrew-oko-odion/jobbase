@@ -1,5 +1,5 @@
 
-class  WelcomeController < ApplicationController
+class WelcomeController < ApplicationController
   layout 'welcome_layout'
   attr_accessor :jobs_cart
   
@@ -16,20 +16,17 @@ class  WelcomeController < ApplicationController
      @job = Job.new
   end
 
-  def create
-    if jobseeker_signed_in? 
-      @apply = Application.new(applications_params) #&& current_jobseeker 
-      if @apply.save
-        flash[:notice] = 'Application sent Successfully'
-        redirect_to welcome_index_path
-      end
+  def create 
+     @apply = Application.new(applications_params) #&& current_jobseeker 
+     if @apply.save
+      flash[:notice] = 'Application sent Successfully'
+      redirect_to welcome_index_path
     else
-      #render plain: session[:applying]
-      flash[:error] = 'Please Login to apply'
+      flash[:notice] = 'Please Login'
       redirect_to new_jobseeker_session_path 
     end
+    #render plain: @apply.inspect
   end
-
   
   def set_cart_to_array
     cool[:cart_items] = []
