@@ -11,7 +11,12 @@ class  WelcomeController < ApplicationController
     @internships = Job.where(job_type: 2, hide: false).paginate(:page => params[:page], :per_page => 6)
   end
 
+  def internship
+    @internships = Job.where(job_type: 2, hide: false).paginate(:page => params[:page], :per_page => 6)
+  end
+  
   def show
+    # `show` would work for both internships and Jobs because it is finding by Id. 
     @job = Job.find(params[:id])
     @apply = Application.new
   end

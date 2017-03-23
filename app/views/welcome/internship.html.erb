@@ -1,0 +1,37 @@
+
+<%# render "welcome/landing_segment" unless jobseeker_signed_in? %>
+<div class="ui divided items">
+    <% @internships.each do |i| %>
+	<div class="item">
+	    <div class="content">
+		<%= link_to i.title, welcome_path(i), class: 'header' %>
+		<div class="meta">
+		    <span class="cinema">IFC Cinema</span>
+		</div>
+		<div class="description">
+		    <p> <%= i.description %> </p>
+		</div>
+		<div class="extra">
+		    <!-- <i class="right chevron icon"></i> -->
+		    <%= link_to "View Details", welcome_path(i), class: "ui right floated primary button", id: 'to_apply' %>
+		    <div class="ui label">Limited</div>
+		    <div class="ui label">IMAX</div>
+		    <div class="ui label"><i class="globe icon"></i> Additional Languages</div>
+		</div>
+	    </div>
+	</div>
+	<% end %>
+	
+</div>
+
+<div class="ui text container">
+    <div style="padding-top: 60px;">
+	 <%= will_paginate @internships %>
+    </div>
+</div>
+
+<script type="text/javascript">
+ $("#to_apply").on('click', function(){
+     console.log('Hello world');
+ });
+</script>
