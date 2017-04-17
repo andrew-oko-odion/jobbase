@@ -20,3 +20,4 @@
 *.erb#
 *.*#
 *.org
+node_modules
