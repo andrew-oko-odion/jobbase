@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require semantic-ui
+// require semantic-ui
 //= require social-share-button
 //= require tether
 
@@ -22,35 +22,30 @@
 //= require skrollr.ie
 //= require skrollr.menu
 //= require skrollr.stylesheets
+//= require typeahead
 
-/* drop down setting */
-  $('.ui .dropdown')
+/* drop down setting 
+ $('.ui .dropdown')
   .dropdown({
       direction: 'downward'
   })
 ;
-
-
+*/
 
 $("#headernav.item").on('click', function(){
     $(this).addClass('active');
 });
 
 
-$('.ui.radio.checkbox')
-  .checkbox()
-;
-
-$('.ui .dropdown')
-  .dropdown({
-    direction: 'downward'
-  })
-;
+$('.item').click(function(){
+   $('.active').removeClass('active');
+   $(this).addClass('active');
+});
 
 // $( document ).ready(function() {
     
-    // hide spinner
-   //  $(".loader").hide();
+// hide spinner
+//  $(".loader").hide();
 
     $(document).on("page:fetch", function(){
 	$(".loader").show();

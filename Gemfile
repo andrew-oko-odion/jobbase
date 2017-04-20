@@ -5,18 +5,22 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'ahoy_matey'  # Analytics 
-gem 'ahoy_email'  # Mails
-gem 'mailkick'    # Handles unsubscribe
+gem 'webpacker', github: 'rails/webpacker'
+gem 'searchkick' # For search 
+gem 'ahoy_matey'  # Mail Analytics 
+gem 'ahoy_email'  # Mails 
+gem 'mailkick'    # Handles unsubscribe mails
 
 gem 'mechanize', '~> 2.7', '>= 2.7.3' # Scrapping 
 gem 'skrollr-rails' 
 gem 'tether-rails'
 gem 'friendly_id', '~> 5.1.0'
 gem 'has_permalink'
-gem 'rest-client', '~> 2.0'      # REST consuming 
+
+# REST Client for consumming API
+gem 'rest-client', '~> 2.0.1'
+
 gem 'social-share-button'
-# gem 'activeresource', github: 'rails/activeresource', branch: 'master'
 gem 'cancan'
 gem 'devise'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
