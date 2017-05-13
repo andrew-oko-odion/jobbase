@@ -13,21 +13,22 @@ gem 'mailkick'    # Handles unsubscribe mails
 
 gem 'mechanize', '~> 2.7', '>= 2.7.3' # Scrapping 
 gem 'skrollr-rails' 
-gem 'tether-rails'
 gem 'friendly_id', '~> 5.1.0'
 gem 'has_permalink'
+gem 'roadie', '~> 3.1.1'  # Handles inline css well for emails 
+gem "letter_opener", :group => :development # preview mail before sending 
+# gem 'acts-as-taggable-on', '~> 4.0'
 
 # REST Client for consumming API
 gem 'rest-client', '~> 2.0.1'
-
+gem 'postal-rails', '~> 1.0'  # Postal mail gem for use with rails mailer
 gem 'social-share-button'
 gem 'cancan'
 gem 'devise'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
-gem 'maily_herald-webui'
-gem 'maily_herald'
 gem 'will_paginate', '>= 3.1'
 gem 'gravtastic'
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master' # Pagination gem
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
