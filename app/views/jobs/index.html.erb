@@ -1,0 +1,28 @@
+<div class="ui divided items">    
+    <% @jobs.each do |j| %>
+	<div class="item">
+	    <div class="content">
+		<%= link_to j.title, job_path(j), class: 'header' %>
+		<div class="meta">
+		    <span class="cinema">IFC Cinema</span>
+		</div>
+		<div class="description">
+		    <p> <%= j.description %> </p>
+		</div>
+		<div class="extra">
+		    <!-- <i class="right chevron icon"></i><!--  --> 
+		    <div class="ui label">Limited</div>
+		    <div class="ui label">IMAX</div>
+		    <div class="ui label"><i class="globe icon"></i> Additional Languages</div>
+		    
+		    <%= link_to "View Details", job_path(j), class: "ui right floated primary button", id: 'to_apply' %>
+		</div>
+	    </div>
+	</div>
+    <% end %></div>
+
+    <div class="ui text container">
+	<div style="padding-top: 60px;">
+	    <%= paginate @jobs  %>
+	</div>
+    </div>
