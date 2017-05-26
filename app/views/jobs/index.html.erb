@@ -1,28 +1,95 @@
-<div class="ui divided items">    
-    <% @jobs.each do |j| %>
-	<div class="item">
-	    <div class="content">
-		<%= link_to j.title, job_path(j), class: 'header' %>
-		<div class="meta">
-		    <span class="cinema">IFC Cinema</span>
-		</div>
-		<div class="description">
-		    <p> <%= j.description %> </p>
-		</div>
-		<div class="extra">
-		    <!-- <i class="right chevron icon"></i><!--  --> 
-		    <div class="ui label">Limited</div>
-		    <div class="ui label">IMAX</div>
-		    <div class="ui label"><i class="globe icon"></i> Additional Languages</div>
-		    
-		    <%= link_to "View Details", job_path(j), class: "ui right floated primary button", id: 'to_apply' %>
+
+<div class="ui text container ">
+    <div class="ui divided items">    
+	<% @jobs.each do |j| %>
+	    <div class="item">
+		<div class="content">
+		    <%= link_to j.title.capitalize, job_path(j), class: 'header', id: 'full_details' %>
+		    <div class="meta">
+			<span class="cinema">IFC Cinema</span>
+		    </div>
+		    <div class="description">
+			<p> <%= j.description.capitalize %> </p>
+		    </div>
+		    <div class="extra">
+			<!-- <i class="right chevron icon"></i><!--  --> 
+			<div class="ui grey label">Limited</div>
+			<div class="ui grey label">IMAX</div>
+			<div class="ui grey label"><i class="globe icon"></i> Additional Languages</div>
+
+			<%= link_to   job_path(j), class: "ui right floated violet icon button" do %>
+			    Full Details
+			    <%= content_tag(:i, "", class: "angle double right icon") %>
+			<% end %>
+			
+		    </div>
 		</div>
 	    </div>
-	</div>
-    <% end %></div>
 
+	    
+	    <script>
+	     $('.item .content .header')
+		 .api({
+		     url: '<%= 'http://localhost:3000/jobs/' + j.id.to_s + '.json' %>',
+		     onResponse: function(response) {
+			 console.log(response);
+			 console.log('<%= j.id %>');
+			 $('.ui.modal .header').empty().html(response.title);
+			 $('.ui.modal .icon.money').empty().html(response.salary);
+			 $('.ui.modal .icon.marker').empty().html(response.location);
+			 $('.ui.modal h3').empty().html(response.description);
+			 $('.ui.modal')
+			     .modal('show')
+			 ;
+			 
+		     }
+
+		 })
+		 ;
+		 
+	    </script>    
+	    
+	<% end %>
+    </div>
+    <div style="float: right">
+	<%= paginate @jobs %>
+    </div>
+</div>
+
+
+
+
+<div class="ui basic modal">
+    <i class="close icon"></i>
+    <div class="header">
+	Job Description
+    </div>
     <div class="ui text container">
-	<div style="padding-top: 60px;">
-	    <%= paginate @jobs  %>
+	<!-- <div style="float: right"> <%# social_share_button_tag(@job.title) %> </div> -->
+	<h2 class="ui violet header"> <%# @job.title.capitalize  %>  </h2>
+	<i class="large violet marker icon" ></i> <%# @job.location.capitalize %>
+	    <br /> 
+	    <i class="large green money icon"></i> <%# number_to_currency @job.salary,  unit: 'N' %>
+
+	    <h3>Job Description </h3>
+	    <%# @job.description.capitalize %>
+	    <br />
+	    <br />
+	    <br />
+	    <br />
+    </div>
+    
+    <div class="actions">
+	<div class="ui black deny button">
+	    Nope
+	</div>
+	<div class="ui positive right labeled icon button">
+	    Yep, that's me
+	    <i class="checkmark icon"></i>
 	</div>
     </div>
+</div>
+
+
+
+
