@@ -1,25 +1,59 @@
 <div class="ui text container">
-    <div style="float: right"> <%= social_share_button_tag(@job.title) %> </div>
+    <div class="ui basic segment">
+	<%= link_to @job.next(@job), class: "ui top right attached basic label", :data => {:content => "Next Job", :position => "top right"}  do %>
+	    <i class="right chevron icon"></i>
+	<% end %>
 
-    
-    
-    <h2 class="ui blue header"> <%= @job.title  %> </h2>
-    <i class="large blue marker icon" ></i> <%= @job.location %>
-    <br /> 
-    <i class="large green money icon"></i> <%= @job.salary.to_i %>
 
-    <h3>Job Description </h3>
-    <%= @job.description %>
+	<%= link_to @job.prev(@job), class: "ui top left attached basic label", :data => {:content => "Previous Job", :position => "top right"}  do %>
+	    <i class="left chevron icon"></i>
+	<% end %>
+    </div>
+    <div class="ui very padded  piled segment">
+	<% session[:applying] = @job.id %>
+	<%= form_for :apply, url: jobs_path, remote: true do |f|  %>
+	    <%= f.hidden_field :jobseeker_id, value: jobseeker_signed_in? ? current_jobseeker.id : nil  %>
+	    <%= f.hidden_field :job_id, value: @job.id  %>
+	    <%= f.hidden_field :employer_id, value: @job.employer.id  %>
+	    <%= f.submit 'Apply', id: 'apply', class: 'ui violet right floated button' %>
+	<% end %>
 
-    <% session[:applying] = @job.id %>
-    <%= form_for :apply, url: welcome_path, remote: true  do |f|  %>
-	<%= f.hidden_field :jobseeker_id, value: jobseeker_signed_in? ? current_jobseeker.id : nil  %>
-	<%= f.hidden_field :job_id, value: @job.id  %>
-	<%= f.hidden_field :employer_id, value: @job.employer.id  %>
-	<%= f.submit 'Apply', id: 'apply', class: 'ui violet right floated button' %>
-    <% end %>
-    <br />
-    <br />
-    <br />
-    <br />
+
+	<!-- <div style="float: right"> <%# social_share_button_tag(@job.title) %> </div> -->
+	<h2 class="ui violet header"> <%= @job.title.capitalize  %> </h2>
+	<i class="large violet marker icon" ></i> <%= @job.location.capitalize %>
+	<br /> 
+	<i class="large green money icon"></i> <%= number_to_currency @job.salary,  unit: 'N' %>
+
+	<h3>Job Description </h3>
+	<%= @job.description.capitalize %>
+
+	<%= form_for :apply, url: jobs_path, remote: true  do |f|  %>
+	    <%= f.hidden_field :jobseeker_id, value: jobseeker_signed_in? ? current_jobseeker.id : nil  %>
+	    <%= f.hidden_field :job_id, value: @job.id  %>
+	    <%= f.hidden_field :employer_id, value: @job.employer.id  %>
+	    <%= f.submit 'Apply', id: 'apply', class: 'ui violet right floated button' %>
+	<% end %>
+	<br />
+	<br />
+    </div>
+    <div class="ui right floated compact menu">
+	<%= link_to @job.next(@job), class: 'item', :data => {:content => "Previous Job", :position => "top right"}  do %>
+	    <i class="left chevron icon"></i>
+	<% end %>
+	<%= link_to @job.prev(@job), class: 'item', :data => {:content => "Next Job"}  do %>
+	    <i class="right chevron icon" ></i>
+	<% end %>
+    </div>
 </div>
+
+
+<script>
+ $('.compact.menu .item')
+     .popup()
+ ;
+
+ $('.segment .basic.label')
+     .popup()
+ ;
+</script>
