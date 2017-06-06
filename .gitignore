@@ -20,4 +20,6 @@
 *.erb#
 *.*#
 *.org
-node_modules
+/node_modules
+/public/packs
+/node_modules

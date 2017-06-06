@@ -10,7 +10,7 @@ gem 'searchkick' # For search
 gem 'ahoy_matey'  # Mail Analytics 
 gem 'ahoy_email'  # Mails 
 gem 'mailkick'    # Handles unsubscribe mails
-
+gem 'oj' # Faster json generation gem 
 gem 'mechanize', '~> 2.7', '>= 2.7.3' # Scrapping 
 gem 'skrollr-rails' 
 gem 'friendly_id', '~> 5.1.0'
@@ -26,7 +26,6 @@ gem 'social-share-button'
 gem 'cancan'
 gem 'devise'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
-gem 'will_paginate', '>= 3.1'
 gem 'gravtastic'
 gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master' # Pagination gem
 
@@ -74,4 +73,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
