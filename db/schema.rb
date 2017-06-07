@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308170320) do
+ActiveRecord::Schema.define(version: 20170528194628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,10 +61,15 @@ ActiveRecord::Schema.define(version: 20170308170320) do
   create_table "applications", force: :cascade do |t|
     t.integer  "jobseeker_id"
     t.integer  "job_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "employer_id"
+    t.integer  "sort_order_id"
+    t.index ["employer_id"], name: "index_applications_on_employer_id", using: :btree
     t.index ["job_id"], name: "index_applications_on_job_id", using: :btree
+    t.index ["jobseeker_id", "job_id"], name: "index_applications_on_jobseeker_id_and_job_id", unique: true, using: :btree
     t.index ["jobseeker_id"], name: "index_applications_on_jobseeker_id", using: :btree
+    t.index ["sort_order_id"], name: "index_applications_on_sort_order_id", using: :btree
   end
 
   create_table "associates", force: :cascade do |t|
@@ -112,8 +117,25 @@ ActiveRecord::Schema.define(version: 20170308170320) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "phonenumber"
+    t.integer  "job_id"
     t.index ["email"], name: "index_employers_on_email", unique: true, using: :btree
+    t.index ["job_id"], name: "index_employers_on_job_id", using: :btree
     t.index ["reset_password_token"], name: "index_employers_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 80
+    t.string   "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
   create_table "job_categories", force: :cascade do |t|
@@ -141,14 +163,22 @@ ActiveRecord::Schema.define(version: 20170308170320) do
     t.string   "location"
     t.string   "company_name"
     t.datetime "closing_date"
-    t.boolean  "active"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.boolean  "active",            default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.decimal  "salary"
     t.integer  "employer_id"
+    t.boolean  "payment_status",    default: false
+    t.boolean  "scraped",           default: false
+    t.boolean  "hide",              default: false
+    t.integer  "payment_id"
+    t.string   "slug"
+    t.text     "tags"
     t.index ["employer_id"], name: "index_jobs_on_employer_id", using: :btree
     t.index ["job_category_id"], name: "index_jobs_on_job_category_id", using: :btree
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id", using: :btree
+    t.index ["payment_id"], name: "index_jobs_on_payment_id", using: :btree
+    t.index ["slug"], name: "index_jobs_on_slug", using: :btree
     t.index ["title"], name: "index_jobs_on_title", using: :btree
   end
 
@@ -174,9 +204,20 @@ ActiveRecord::Schema.define(version: 20170308170320) do
     t.datetime "date_of_birth"
     t.text     "about"
     t.boolean  "married"
+    t.integer  "work_experience_id"
+    t.integer  "education_id"
+    t.integer  "about_id"
+    t.integer  "associate_id"
+    t.integer  "application_id"
+    t.string   "fullname"
+    t.index ["about_id"], name: "index_jobseekers_on_about_id", using: :btree
+    t.index ["application_id"], name: "index_jobseekers_on_application_id", using: :btree
+    t.index ["associate_id"], name: "index_jobseekers_on_associate_id", using: :btree
     t.index ["confirmation_token"], name: "index_jobseekers_on_confirmation_token", unique: true, using: :btree
+    t.index ["education_id"], name: "index_jobseekers_on_education_id", using: :btree
     t.index ["email"], name: "index_jobseekers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_jobseekers_on_reset_password_token", unique: true, using: :btree
+    t.index ["work_experience_id"], name: "index_jobseekers_on_work_experience_id", using: :btree
   end
 
   create_table "mailkick_opt_outs", force: :cascade do |t|
@@ -242,6 +283,27 @@ ActiveRecord::Schema.define(version: 20170308170320) do
     t.datetime "updated_at"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.integer  "employer_id"
+    t.string   "card_no"
+    t.string   "cvv"
+    t.string   "expiry_year"
+    t.string   "expiry_month"
+    t.float    "amount"
+    t.float    "fee"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "job_id"
+    t.index ["employer_id"], name: "index_payments_on_employer_id", using: :btree
+    t.index ["job_id"], name: "index_payments_on_job_id", using: :btree
+  end
+
+  create_table "sort_orders", force: :cascade do |t|
+    t.string   "clause"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "visits", force: :cascade do |t|
     t.string   "visit_token"
     t.string   "visitor_token"
@@ -287,11 +349,22 @@ ActiveRecord::Schema.define(version: 20170308170320) do
   end
 
   add_foreign_key "abouts", "jobseekers"
+  add_foreign_key "applications", "employers"
   add_foreign_key "applications", "jobs"
   add_foreign_key "applications", "jobseekers"
+  add_foreign_key "applications", "sort_orders"
   add_foreign_key "associates", "jobseekers"
   add_foreign_key "educations", "education_types"
   add_foreign_key "educations", "jobseekers"
+  add_foreign_key "employers", "jobs"
   add_foreign_key "jobs", "employers"
+  add_foreign_key "jobs", "payments"
+  add_foreign_key "jobseekers", "abouts"
+  add_foreign_key "jobseekers", "applications"
+  add_foreign_key "jobseekers", "associates"
+  add_foreign_key "jobseekers", "educations"
+  add_foreign_key "jobseekers", "work_experiences"
+  add_foreign_key "payments", "employers"
+  add_foreign_key "payments", "jobs"
   add_foreign_key "work_experiences", "jobseekers"
 end
