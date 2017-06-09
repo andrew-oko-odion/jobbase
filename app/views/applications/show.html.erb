@@ -1,14 +1,35 @@
-<div class="ui padded segment">
-  <p> Personal Details </p>
-<h3 class="ui blue header">  <%= @personal.jobseeker.firstname + ' ' +  @personal.jobseeker.lastname %> </h3>
-  <p> Date of Birth </p> <%= @personal.jobseeker.date_of_birth %>
+<div class="ui very padded teal raised segment">
+    <p> Profile Details </p>
+    <div class="ui compact buttons">
+	<%= form_for(:application, url: application_path(@candidate_application), method: :patch, remote: true  ) do |f| %>
+	    <%= f.hidden_field :sort_order_id, value: "2" %>
+	    <%= f.submit 'Valid Entry', class: 'ui positive button' %>
+	<% end %>
+	<%= form_for(:application, url: application_path(@candidate_application), method: :patch, remote: true  ) do |f| %>
+	    <%= f.hidden_field :sort_order_id, value: "3" %>
+	    <%= f.submit 'Call For Next Stage', class: 'ui primary button' %>
+	<% end %>
+	
+	<%= form_for(:application, url: application_path(@candidate_application), method: :patch, remote: true ) do |f| %>
+	    <%= f.hidden_field :sort_order_id, value: "1" %>
+	    <%= f.submit 'Not Requirement', class: 'ui negative button' %>
+	<% end %>
+    </div>
+    
+    <h3 class="ui blue header">  <%=  @profile.jobseeker.firstname + ' ' +  @profile.jobseeker.lastname %> </h3>
+    <p> Date of Birth </p> <%= @profile.jobseeker.date_of_birth %>
 
-
-  <div class="ui divider"> </div>
-  <p> Eduacation Details </p>
-
-  <div class="ui divider"> </div>
-  <p> Work Experience Details </p>
-
+    <div class="ui divider"> </div>
+    <p> Eduacation Details </p>
+    <% @profile.jobseeker.education %>
+    
+    <div class="ui divider"> </div>
+    <p> Work Experience Details </p>
+    <% @profile.jobseeker.work_experience.each do |e|  %>
+	<%= e.job_title %> <br>
+	<%= e.company_name %> <br>
+	<%= e.job_title %> <br>
+	<%= e.company_website %> <br>
+    <% end %>
   
 </div>
