@@ -20,3 +20,12 @@
 *.erb#
 *.*#
 *.org
+/node_modules
+/public/packs
+/node_modules
+*~
+ls
+['ls']
+/#Gemfile#
+/#ls#
+ls

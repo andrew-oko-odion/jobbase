@@ -1,0 +1,16 @@
+/* Adding support for sticky footer */
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+.sticky-footer {
+  flex: 1; }
+
+
+#header {
+    background-color: #FFFFFF;
+    margin-top: 0px;
+}
+
+/*# sourceMappingURL=dashboard.css.map */

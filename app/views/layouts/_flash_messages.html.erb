@@ -1,24 +1,13 @@
-<% if !flash[:notice].blank? || !flash[:error].blank? %>
-	<div style="float:right;">
-	    <div class="ui floating  message" id="message">
-		    <i class="close icon" style="float: right; padding-right: 30px"></i>
-		<div class="content">
-		    <div style="float: left;">
-			<i class=" green checkmark icon"></i>
-		    </div>
-		    <div style="padding-left: 10px;">
-			<%= flash[:notice] %> <%= flash[:error] %>
-		    </div>
-		</div>
-	    </div>
-	</div>
-	
-	
-	<script>
-	 $('.message.floating')
-	     .transition('scale in')
-	 ;
-	</script>
-	
+<% flash.each do |key, value| %>
+<script type="text/javascript" >
+  <% if key == 'notice' %>
+  toastr['success']('<%= value %>'); 
+  <% elsif key == 'alert' %>
+ toastr['info']('<%= value %>');
+  <% elsif key == 'error' %>
+ toastr['error']('<%= value %>');
+  <% else %>
+  toastr['<%= "#{key}" %>']('<%= value %>');
+  <% end %>
+</script>
 <% end %>
-

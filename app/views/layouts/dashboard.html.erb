@@ -3,72 +3,51 @@
     <head>
 	<title>Jobtest</title>
 	<%= csrf_meta_tags %>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-	<style>
-	 
-	 /* Adding support for sticky footer */
-	 .site {
-             display: flex;
-             min-height: 100vh;
-             flex-direction: column;
-	 }
-
-	 .sticky-footer{
-	     flex: 1
-	 }
-	</style>
+	<%= javascript_pack_tag 'toastr' %>
+	<%= stylesheet_pack_tag 'toastr' %>
+	<%= javascript_pack_tag 'semantic-ui' %>
+	<%= stylesheet_pack_tag 'semantic-ui' %>
     </head>
+    
     <body>
-	<div class="ui fluid container">
-	    <%= render 'dashboard/header' %>
-	    <% unless employer_signed_in? %>
-		<%= render 'dashboard/employer_landing' %>
-	    <% end %>
-	    <% if employer_signed_in? %>
-		<div class="ui inverted vertical sticky menu" style="float:left; height: 600px; border-rauis: 0;">
-		    <a class="item">
-			<i class="home icon"></i>
-			Active Jobs
-		    </a>
-		    <a class="item">
-			<i class="block layout icon"></i>
-			Jobs Posted
-		    </a>
-		    <a class="item">
-			<i class="smile icon"></i>
-			Applications
-		    </a>
-		    <a class="item">
-			<i class="calendar icon"></i>
-			History and me 
-		    </a>
-		    <div class="item">
-			<a href="dashboard/post"> Post </a>
-		    </div>
+	<%= render 'dashboard/header' %>
+	<%= render 'layouts/flash_messages' %>
+	<% unless employer_signed_in? %>
+	    <%# render 'dashboard/employer_landing' %>
+	    <br />
+	    <%= yield %>
+	<% end %>
+	
+	<% if employer_signed_in? %>
+	    <div class="ui two column Left floated relaxed stackable grid container">
+		<div class="two wide column">
+		    <%= render 'dashboard/employer_side_nav' %>
 		</div>
-		<div class="ui fluid container" style="padding-left: 250px; padding-right: 40px;">
+		<div class="thirteen wide column">
 		    <%= yield %>
 		</div>
-		<%= render 'layouts/footernav' %>
-	</div>
-	    <% end %> 	    
-	</div>
-	<script>
-	 // Side navigation dashboard 
+	    </div>
+	<% end %>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<!-- <br />
+	     <br />	     -->
+	<%= render 'layouts/footernav' %>
+	
+	<script type="text/javascript">
 	 $('.ui.sidebar')
 	     .sidebar('show')
 	 ;
 
-	 // message box flash messages 
-	 $('.message .close')
-	     .on('click', function() {
-		 $(this)
-		     .closest('.message')
-		     .transition('fade')
-		 ;
+	 $('.ui .dropdown')
+	     .dropdown({
+		 direction: 'downward'
 	     })
 	 ;
 	</script>	

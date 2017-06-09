@@ -1,4 +1,6 @@
 class WorkExperiencesController < ApplicationController
+  before_action :authenticate_jobseeker!
+  layout 'jobsinternships_layout'
   def index
     @workexperiences  = WorkExperience.all 
   end

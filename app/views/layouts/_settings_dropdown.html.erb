@@ -1,27 +1,33 @@
-<!-- <div class="item" data-tooltip="update settings" data-position="bottom right">  -->
-<div class="ui floating labeled icon dropdown" >
-    Settings
+
+<div class="ui floating pointing labeled icon dropdown" >
+    <% if !current_jobseeker.firstname.nil?  %>
+	<%= (current_jobseeker.firstname + ' ' + current_jobseeker.lastname).titleize %>
+    <% else %>
+	<%= (current_jobseeker.fullname).titleize %>
+    <% end %>
     <i class="angle down icon"></i>
     <div class="menu">
-	<h5 class="blue header">
-	    <%= current_jobseeker.firstname %>
-	    <div class="ui divider"></div>
-	</h5>
-	<%= link_to 'education details', educations_path , class: 'item' %>
-	<%= link_to 'work experience', work_experiences_path, class: 'item' %>
-	<div class="divider"></div>
-	<%= link_to 'profile', edit_jobseeker_registration_path, class: 'item' %>
-	<%= link_to 'logout', destroy_jobseeker_session_path, method: :delete, class: 'item'  %>
+	
+	<%= link_to educations_path , class: 'item'  do %>
+	    <i class="violet student icon"></i> Education     
+	<% end %>
+	<%= link_to  work_experiences_path, class: 'item' do %>
+	    <i class="violet travel icon"></i> Work Experience
+	<% end %>
+	<%= link_to edit_jobseeker_registration_path, class: 'item' do %>
+	    <i class="violet setting icon"></i> Profile
+	<% end %>
+	<%= link_to destroy_jobseeker_session_path, method: :delete, class: 'item' do %>
+	    <i class="violet sign out icon"></i> Logout
+	<% end %>
 	
     </div>    
 </div>
 
-<!--  </div> -->
-
 <script>
-  $('.ui .dropdown')
-  .dropdown({
-      direction: 'downward'
-  })
-;
-  </script>
+ $('.ui .dropdown')
+     .dropdown({
+	 direction: 'downward'
+     })
+ ;
+</script>

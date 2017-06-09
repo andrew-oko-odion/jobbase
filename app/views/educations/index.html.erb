@@ -1,18 +1,19 @@
-
-    <%= link_to 'Add Education Details', new_education_path, class: 'ui basic violet right floated button' %>
-    <div class="ui text container">
-	<h1>Summary of Education Details </h1>
-	
-	<% @educations.each do |edu| %>
-	    <%= link_to raw('<i class="edit icon"></i>') + "Edit", edit_education_path(edu.id), class: "ui right floated violet button" %>
-	    <%= link_to raw('<i class="trash outline icon"></i>') + 'Remove', education_path(edu), method: :delete, class: "ui right floated violet button", data: {:confirm => 'Are you Sure'} %>
-	    <h3> <%= edu.school_name %> </h3> </br>
-	    
-	    <%= edu.school_website %> </br>
-	    <%= edu.certificate_title %> From: <%= edu.start_date %> To: <%= edu.end_date %></br>
-	    <div class="ui divider">
-	    </div>  	    
-	<% end %>
-	
+<div class="ui text container">
+    <div class="ui very padded piled segment">
+	<h2 class="ui blue header"> Education Summary </h2>
+  <%= link_to 'Add Certificate', new_education_path, class: 'ui violet button' %>
+  <% if @educations.blank? %>
+  <%= "you have not updated your education details yet" %>
+  <% end %>
+  <% @educations.each do |edu| %>
+  <%= link_to raw('<i class="edit icon"></i>') + "Edit", edit_education_path(edu.id), class: "ui right floated violet button" %>
+  <%= link_to raw('<i class="trash outline icon"></i>') + 'Remove', education_path(edu), method: :delete, class: "ui right floated violet button", data: {:confirm => 'Are you Sure'} %>
+  <h3> <%= edu.school_name %> </h3> </br>
+  
+  <%= edu.school_website %> </br>
+  <%= edu.certificate_title %> From: <%= edu.start_date %> To: <%= edu.end_date %></br>
+  <div class="ui divider">
+  </div>  	    
+  <% end %>
     </div>
-
+</div>

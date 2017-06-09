@@ -10,4 +10,12 @@ class EmployerMailer < ApplicationMailer
 
     mail to: "to@example.org"
   end
+
+  def notification(type)
+    # Sends a mail notification to Candidate 
+  end
+
+  def campaign
+  end
+  
 end

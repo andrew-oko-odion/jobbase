@@ -1,65 +1,59 @@
 Rails.application.routes.draw do
+  get 'application_history/index'
+  get 'dashboard/welcome' => "dashboard#welcome"
+  get 'welcome/internships' => "welcome#internship"
+  post "welcome/:id/" => "welcome#create"
+
+ #get "applications/:job_id/:jobseeker_id" => "applications#show"
+ put "sort_candidates/:id" => "applications#update"
+  resources :welcome do
+    collection do
+      get :autocomplete
+    end
+  end
+
+  resources :application_history
+  resources :jobs do
+    get 'page/:page', action: :index, on: :collection
+     collection do
+      get :autocomplete
+    end
+  end
   
+  resources :internships do
+     get 'page/:page', action: :index, on: :collection
+  end
   
-#  get 'applications/index'
-
-#  get 'applications/show'
-
-#  get 'work_experiences/index'
-
-# get 'work_experiences/show'
-
-#  get 'work_experiences/edit'
-
-# get 'work_experiences/new'
-
-#  get 'educations/edit'
-
-#  get 'educations/show'
-
-#  get 'educations/new'
-
-#  get 'educations/index'
-
-#  get 'educations/edit'
-#  get 'educations/delete'
-
-  
-  #get 'dashboard/test'
-
-  get 'jobcart/index'
-
-  get 'jobcart/show'
-
-  get 'jobcart/new'
-
-  get 'jobcart/edit'
-  resources :welcome
   resources :educations
-  resources :applications
+  resources :applications do
+     collection do
+      get :search
+    end
+  end
+  
+  
+  resources :sort_candidates
   resources :work_experiences
-  #resources :jobs 
+  resources :payments
   resources :dashboard
-
-  post 'applications/create'
-
+  resources :jobcarts
+  
+  
+  # post 'applications/create'
   root 'welcome#index'
+  
+  devise_scope :jobseeker do 
+    get 'jobseekers/index' => 'jobseekers/registrations#index'
+  end
+  
   devise_for :jobseekers, controllers: {
-               sessions: 'jobseekers/sessions'
-               #registrations: 'jobseekers/sessions',
-               #passwords: 'jobseekers/sessions'
+               registrations: 'jobseekers/registrations', sessions: 'jobseekers/sessions'
              }
   
   devise_for :employers, controllers: {
-        sessions: 'employers/sessions'
-      }
+               sessions: 'employers/sessions'
+             }
 
-  
-  # get 'welcome/index'
-  # get 'job-details' to: 'welcome#show', as: 'job2'
-  # get 'welcome/apply'
   get 'dashboard/post'
-  
-  mount MailyHerald::Webui::Engine => "/maily_webui"
-  
+
 end

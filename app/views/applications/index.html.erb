@@ -1,2 +1,141 @@
-<h1>Applications#index</h1>
-<p>Find me in app/views/applications/index.html.erb</p>
+<div class="ui container">
+    <div class="ui selection dropdown">
+	<i class="dropdown icon"></i>
+	<div class="text">Select Posted Job</div>
+	<div class="menu">
+	    <% @total_jobs.each do |j|  %>
+		<%= link_to j.title, applications_path(job_id: j.id), class: 'item' %> 
+	    <% end %>
+	</div>
+    </div>
+    
+    <button  class="ui icon button">
+	<i class="repeat icon"></i>
+    </button>
+     
+    <div class="ui icon input" >
+	<i class="search icon"></i>
+	<input type="text" class="prompt" placeholder="Search Candidates..." style="border-radius: 0.3em">
+    </div>  
+    
+    <div class="ui stackable fluid five item top attached menu">
+	<a class="item" data-tab="all">
+	    All Applications <div class="ui circular label"> <%= @candidates.count %> </div> 
+	</a>
+	<a class="item" data-tab="accepted" href="#">
+	    <i class="big green checkmark icon"></i> Accepted <div class="ui circular label"> 5 </div>
+	</a>
+	<a class="item" data-tab="interview" href="#">
+	    <i class="big green checkmark icon"></i> Invite interview <div class="ui circular label"> 5 </div>
+	</a>
+	<%#= link_to "Accepted", applications_path(job_id: j.id), class: 'item' do %>
+	<%#= content_tag(:div, "", class: "ui circular label") do %>
+	
+	<%# end %>
+	<%# end %>
+	<a class="item" data-tab="rejected" href="#">
+	    <i class="big red remove icon"></i> Rejected <div class="ui circular label"> 7 </div>
+	</a>
+	<a class="item" data-tab="requirement" href="#">
+	    <i class="big red remove icon"></i>  Not Requirement <div class="ui circular label"> 3 </div>
+	</a>
+    </div>
+    
+    <div class="ui very padded attached active tab segment" data-tab="all">
+	<div class="ui master checkbox">
+	    <input type="checkbox" name="applications">
+	    <label>select all</label>
+	</div>
+	<div class="ui divided items">
+	    <% @candidates.each do |profile| %>
+		<div class="item">
+		    <div class="ui checkbox">
+			<input type="checkbox" name="application">
+			<label></label>
+		    </div>
+		    
+		    <div class="content">
+			<h3 class="header"><%= link_to profile.jobseeker.firstname.capitalize + ' ' +  profile.jobseeker.lastname.capitalize, application_path(profile) %> </h3>
+			
+			<div class="meta">
+			    <span class="cinema">Union Square 14</span>
+			</div>
+			<div class="description">
+			    <p></p>
+			</div>
+			<div class="extra">
+			    <div class="ui grey label">IMAX</div>
+			    <div class="ui grey label"><i class="globe icon"></i> Additional Languages</div>
+			</div>
+		    </div>
+		</div>
+
+	    <% end %>
+	    
+	</div>
+    </div>
+
+
+
+	<div class="ui very padded attached tab segment" data-tab="accepted">
+	    <%= render "accepted" %>
+	</div>
+
+	<div class="ui very padded attached tab segment" data-tab="interview">
+	    <%= render "interview" %>
+	</div>
+
+	<div class="ui very padded attached tab segment" data-tab="rejected">
+	    <%= render "rejected" %>
+	</div>
+    <br />
+    <br />
+
+    <div style="float:right">
+	<%= paginate @candidates %>
+    </div>
+</div>
+
+
+
+
+<script>
+ $('.menu .item')
+     .tab()
+ ;
+
+ $('.master.checkbox')
+     .checkbox({
+	 // check all children
+	 onChecked: function() {
+	     // var $childCheckbox  = $(this).closest('.checkbox').siblings('.abc').find('.checkbox');
+	     var $childCheckbox  = $(this).siblings('.items').find('.checkbox');
+	     $childCheckbox.checkbox('check');
+	 },
+	 // uncheck all children
+	 onUnchecked: function() {
+	     var $childCheckbox  = $(this).closest('.checkbox').siblings('.abc').find('.checkbox');
+	     $childCheckbox.checkbox('uncheck');
+	 }
+     })
+ ;
+
+
+ //  Hand Search for candidates
+
+ $('.ui.search')
+     .search({
+	 apiSettings: {
+	     url: '//localhost:3000/applications/search.json?query={query}'
+	 },
+	 fields: {
+	     results : 'candidates',
+	     title   : 'title',
+	     url     : 'url'
+	 },
+	 minCharacters : 1,
+	 debug: true
+     })
+ ;
+ 
+</script>

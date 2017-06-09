@@ -5,25 +5,29 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'ahoy_matey'  # Analytics 
-gem 'ahoy_email'  # Mails
-gem 'mailkick'    # Handles unsubscribe
-
+gem 'webpacker', github: 'rails/webpacker'
+gem 'searchkick' # For search 
+gem 'ahoy_matey'  # Mail Analytics 
+gem 'ahoy_email'  # Mails 
+gem 'mailkick'    # Handles unsubscribe mails
+gem 'oj' # Faster json generation gem 
 gem 'mechanize', '~> 2.7', '>= 2.7.3' # Scrapping 
 gem 'skrollr-rails' 
-gem 'tether-rails'
 gem 'friendly_id', '~> 5.1.0'
 gem 'has_permalink'
-gem 'rest-client', '~> 2.0'      # REST consuming 
+gem 'roadie', '~> 3.1.1'  # Handles inline css well for emails 
+gem "letter_opener", :group => :development # preview mail before sending 
+# gem 'acts-as-taggable-on', '~> 4.0'
+
+# REST Client for consumming API
+gem 'rest-client', '~> 2.0.1'
+gem 'postal-rails', '~> 1.0'  # Postal mail gem for use with rails mailer
 gem 'social-share-button'
-# gem 'activeresource', github: 'rails/activeresource', branch: 'master'
 gem 'cancan'
 gem 'devise'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
-gem 'maily_herald-webui'
-gem 'maily_herald'
-gem 'will_paginate', '>= 3.1'
 gem 'gravtastic'
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master' # Pagination gem
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
@@ -69,4 +73,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -7,7 +7,9 @@ class Employer < ApplicationRecord
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :jobs
+  has_many :job
+  has_many :application
+  # has_many :payments
 
   
 end

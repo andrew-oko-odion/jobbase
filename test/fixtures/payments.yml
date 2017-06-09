@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employer: one
+  recipient_bank: MyString
+  recipient_account_number: MyString
+  card_no: MyString
+  cvv: MyString
+  pin: MyString
+  expiry_year: MyString
+  expiry_month: MyString
+  api_key: MyString
+  amount: 1.5
+  fee: 1.5
+  redirecturl: MyString
+  medium: MyString
+
+two:
+  employer: two
+  recipient_bank: MyString
+  recipient_account_number: MyString
+  card_no: MyString
+  cvv: MyString
+  pin: MyString
+  expiry_year: MyString
+  expiry_month: MyString
+  api_key: MyString
+  amount: 1.5
+  fee: 1.5
+  redirecturl: MyString
+  medium: MyString

@@ -2,7 +2,7 @@
   <%= form_for @workexperience  do |f| %>
 	    <div class="field">
 		<%= f.label 'Company Name' %>
-		<%= f.text_field :company_name, autofocus: true, placeholder: "example `Exato` "  %> 
+		<%= f.text_field :company_name, placeholder: "example `Exato` "  %> 
 	    </div>
 	    <div class="field">
 		<%= f.label :Job_Title %> 
@@ -30,14 +30,13 @@
 		<%= f.text_area :about_role, placeholder: "`Job description` " %>
 	    </div>
 
-	    
 	    <%= f.hidden_field :jobseeker_id, value: current_jobseeker.id %>
 	    <div class="inline fields">
 		<div class="field">
-		    <%= f.submit 'Update Work Experince', class: 'ui violet button' %>
+		    <%= f.submit 'Update', class: 'ui violet button' %>
 		</div>
 		<div class="field">
-	            <%= link_to raw('<i class="undo icon"></i>') + 'Cancel', work_experiences_path, class: 'ui right floated orange button' %>
+	            <%= link_to 'Cancel', work_experiences_path, class: 'ui right floated  button' %>
 		</div>
 	    </div>
 	<% end %>

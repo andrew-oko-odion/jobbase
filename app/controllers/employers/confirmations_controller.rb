@@ -1,4 +1,5 @@
 class Employers::ConfirmationsController < Devise::ConfirmationsController
+  layout 'dashboard'
   # GET /resource/confirmation/new
   # def new
   #   super

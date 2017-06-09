@@ -1,32 +1,51 @@
-<!-- Application Header for Jobseekers -->
-<div id="header" >
+<div class="ui fixed stackable text menu "id="header" style="margin-top: 0px; padding-top: 1.5em; opacity: 0.9">
     <div class="ui container">
-	<div class="ui huge text menu " id="header" style="margin-top: 0px;">
-	    <%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
-	    <%= link_to "JobBoard",  root_path, class: 'item' %>
-	    <div class="right menu">
-		<% if jobseeker_signed_in? %>
-		    <a class="ui label item">
-			<i class="world icon"></i> 23
-		    </a>
-		    <a class="ui label item">
-			<i class="mail icon"></i> 23
-		    </a>
-		    <%# image_tag current_jobseeker.gravatar_url %>
-		    <%# link_to 'Edit profile', edit_jobseeker_registration_path, class: 'item' %> 
-		    <%# link_to "Logout", destroy_jobseeker_session_path, method: :delete, :class => 'item'  %>
-		    <%= link_to 'Jobs', root_path + "#jobs", class: 'item' %>
-		    <%= link_to 'Internship', '#', class: 'item' %>
-		    <div class="item"> <%= render 'layouts/settings_dropdown' %></div>
-		<% else %>
-		    <%= link_to 'Employers', dashboard_index_path, class: 'item' %>
-		    <%= link_to "Login", new_jobseeker_session_path, class: 'item'  %>
-		    <div class="item">
-			<%= link_to raw('<i class="unlock alternate icon"></i>') + "Sign up", new_jobseeker_registration_path, class: "ui small basic violet button" %> 
+	<%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
+	    <div class="ui fluid search right item">
+		<div class="ui labeled icon input">
+		    <div class="ui grey label">
+			jobs | internships
 		    </div>
-		<% end  %>
+		    <%= text_field_tag :query, params[:query], class: "prompt", placeholder: 'Search jobs...', style: "border-radius: 0.2em;  width: 30em !important;" %>
+		    <i class="inverted circular search link icon"></i>
+		</div>
 	    </div>
-	</div>
+	<%= link_to 'Open Jobs', jobs_path, class: 'item' %>
+	<%= link_to 'Paid Internship', internships_path, class: 'item' %>
+	<% if jobseeker_signed_in? %>
+	    <div class="item link"> <%= render 'layouts/settings_dropdown' %></div>
+	<% else %>
+	    <%= link_to "Login", new_jobseeker_session_path, class: 'item'  %>
+	    <div class="item">
+		<%= link_to raw('<i class="unlock alternate icon"></i>') + "Sign up", new_jobseeker_registration_path, class: "ui primary basic button" %> 
+	<% end  %>
+	    </div>
     </div>
 </div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<script>
+ $('.ui.search')
+     .search({
+	 apiSettings: {
+	     url: '//localhost:3000/jobs/autocomplete.json?query={query}'
+	 },
+	 fields: {
+	     results : 'items',
+	     title   : 'title',
+	     url     : 'url'
+	 },
+	 minCharacters : 1,
+	 debug: true
+     })
+ ;
+</script>
+
 

@@ -1,0 +1,68 @@
+<div class="ui form">
+    <%= form_for :job, url: applications_path, remote: true  do |f|  %>
+	<div class="field">
+	    <%= f.label :Job_Title %>
+	    <%= f.text_field :title, placeholder: " example `Software Developer`" %>
+	</div>
+	
+	<div class="inline fields">
+	<div class="field">
+	    <%= f.label :Job_Type %>
+	    <%= f.text_field :job_type_id %>
+	    <%= f.select :job_type_id, class: "ui dropdown" %>
+	    <select class="ui dropdown">
+		<option value="">Job Type</option>
+		<option value="1">Job</option>
+		<option value="0">Intership</option>
+	    </select>
+	</div>
+	
+	<div class="field">
+	    <%= f.label :Job_Category %>
+	    <%= f.text_field :job_category_id %>
+	</div>
+	</div>
+	
+	<div class="field">
+	    <%= f.label :Location%>
+	    <%= f.text_field :location %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :Application_Email %>
+	    <%= f.text_field :application_email %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :Company_name %>
+	    <%= f.text_field :company_name %>
+	</div>
+
+	<div class="inline field">
+	    <%= f.label :Closing_date %>
+	    <%= f.date_select :closing_date %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :Salary_Per_Annul %>
+	    <%= f.text_field :salary %>
+	</div>
+	
+	<div class="field">
+	    <%= f.label :Tags %>
+	    <%= f.text_field :tags %>
+	</div>
+	
+	<div class="field">
+	    <%= f.label :Job_Description %>
+	    <%= f.text_area :description %>
+	</div>
+
+	<%= f.hidden_field :employer_id, value: current_employer.id %>
+
+	<div class="field">
+	    <%= f.submit 'Post', class: 'ui big violet button', id: 'job_post' %>
+	</div>
+
+    <% end %>
+</div>

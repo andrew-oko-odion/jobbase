@@ -1,5 +1,5 @@
 class Jobseekers::ConfirmationsController < Devise::ConfirmationsController
-  
+  # layout 'jobsinternsphips_layout'
   # GET /resource/confirmation/new
    def new
      super

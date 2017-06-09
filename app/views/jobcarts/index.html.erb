@@ -1,0 +1,7 @@
+<div class="ui text container" id="index">
+  <h1>Items in your cart </h1>
+  <%= link_to 'post new job', new_jobcart_path, remote: :true,  id: 'new_link' %>
+<% @cart.each do |f|  %>
+    <p> <%= f.title %> <%= f.id %> <%= link_to "(remove)", jobcarts_path(f), method: :delete, data: {confirm: "Are you sure?"}, remote: true %> </p>     
+    <% end %>
+</div> 

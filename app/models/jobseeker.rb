@@ -1,4 +1,5 @@
 class Jobseeker < ApplicationRecord
+  validates :fullname, :password, :email, presence: true
  # include 'Gravtastic'
   #  gravtastic
   
