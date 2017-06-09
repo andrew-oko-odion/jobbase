@@ -1,20 +1,11 @@
 <div class="ui container">
     <div class="ui text menu">
 	<%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
-	<%= link_to "JobBoard",  root_path, class: 'item' %>
-	<div class="right menu">
+	
+	<div class="right item">
 	    <% if employer_signed_in? %>
-		<!--  Logged in as <strong><%# current_employer.id %></strong> -->
-		<%= link_to 'Post a Job', new_welcome_path, class: 'item', id: 'new_job' %> 
-		<%= link_to "Logout", destroy_employer_session_path, method: :delete, :class => 'item'  %>
 		<div class="item">
 		    <%= render 'dashboard/employer_dropdown' %>
-		</div>
-		<div class="item">
-		    <div class="ui icon input">
-			<input placeholder="Search..." type="text">
-			<i class="search icon"></i>
-		    </div>
 		</div>
 	    <% else %>
 		<%= link_to "Login", new_employer_session_path, class: 'item'  %>

@@ -1,10 +1,9 @@
-
-<div class="ui secondary vertical menu">
-    <a class="item">
-	Company Profile
-    </a>
-    <a class="item">
-	Active Jobs
-    </a>
-    <%= link_to 'Edit profile', edit_employer_registration_path, class: 'item' %>
+<div class="ui secondary vertical compact menu">
+    <div class="item">
+	<%= link_to "New", new_application_path, class: 'ui teal button' %>
+    </div>
+    <%= link_to 'Dashboard', dashboard_index_path, class: 'item' %>
+    <%= link_to 'All Jobs', payments_path, class: 'item' %>
+    <%= link_to 'Applications', applications_path, class: 'item' %>
+	
 </div>
