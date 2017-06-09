@@ -24,3 +24,7 @@
 /public/packs
 /node_modules
 *~
+ls
+['ls']
+/#Gemfile#
+/#ls#
