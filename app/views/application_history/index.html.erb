@@ -1,0 +1,38 @@
+<table class="ui celled striped table">
+    <thead>
+	<tr><th colspan="3">
+	    My Application History  
+	</th>
+	</tr>
+    </thead>
+    <thead>
+	<tr>
+	    <th>Job Title</th>
+	    <th>Date</th>
+	    <th>Company Name</th>
+	</tr>
+    </thead>
+    <tbody>
+	<% @application_history.each do |item| %>
+	<tr>
+	    <td class="collapsing">
+		<i class="folder icon"></i> <%= link_to item.job.title, job_url(item.job) %>
+	    </td>
+	    <td> <%= time_ago_in_words(item.created_at) + ' ago (' + item.created_at.strftime("%d %b, %y")  + ')'%>  </td>
+	    <td class="right aligned collapsing"> Google </td>
+	</tr>
+	<% end %>
+    </tbody>
+    <div style="float: right">
+	<%= paginate @application_history %>
+    </div>
+</table>
+
+
+<div style="float: right">
+    <%= paginate @application_history %>
+</div>
+
+
+    
+
