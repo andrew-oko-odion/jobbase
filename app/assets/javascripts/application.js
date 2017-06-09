@@ -16,7 +16,7 @@
 //= require_tree .
 // require semantic-ui
 //= require social-share-button
-//= require tether
+
 
 //= require skrollr
 //= require skrollr.ie

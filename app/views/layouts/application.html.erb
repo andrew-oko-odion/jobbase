@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Jobtest</title>
+    <title>Jobpanda</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <script>
-      $(function(){
-      $.stellar({
-      horizontalScrolling: false,
-      verticalOffset: 80
-      });
-      });
-    </script>
-
+    <%= javascript_pack_tag 'toastr' %>
+    <%= stylesheet_pack_tag 'toastr' %>
+    <%= javascript_pack_tag 'semantic-ui' %>
+    <%= stylesheet_pack_tag 'semantic-ui' %>
+    <%# javascript_pack_tag 'nprogress' %>
+    <%# stylesheet_pack_tag 'nprogress' %>
+    <%# stylesheet_pack_tag 'progressbar' %>
+    <%= javascript_pack_tag 'progressbar' %>
+    <%= javascript_pack_tag 'hello_react' %>       
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= render 'layouts/flash_messages' %>
-    <!-- removed container here every page should decide that itself -->    
-      	      <%= yield %>
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/flash_messages' %>
+      <%= yield %>
+      <br />
+      <br />
+      <br />
       <%= render 'layouts/footernav' %>
-      <script>
-	$('.message .close')
-	.on('click', function() {
-	$(this)
-	.closest('.message')
-	.transition('fade')
-	;
-	})
-	;
-      </script>
   </body>
 </html>
