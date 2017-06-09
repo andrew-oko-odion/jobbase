@@ -1,16 +1,7 @@
-<div class="ui fixed stackable text menu "id="header" style="margin-top: 0px; padding-top: 1.5em; opacity: 0.9">
+<div class="ui stackable text menu "id="header" style="margin-top: 0px; padding-top: 1.5em; opacity: 0.9">
     <div class="ui container">
 	<%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
-	    <div class="ui fluid search right item">
-		<div class="ui labeled icon input">
-		    <div class="ui grey label">
-			jobs | internships
-		    </div>
-		    <%= text_field_tag :query, params[:query], class: "prompt", placeholder: 'Search jobs...', style: "border-radius: 0.2em;  width: 30em !important;" %>
-		    <i class="inverted circular search link icon"></i>
-		</div>
-	    </div>
-	<%= link_to 'Open Jobs', jobs_path, class: 'item' %>
+	<%= link_to 'Open Jobs', jobs_path, class: 'right item' %>
 	<%= link_to 'Paid Internship', internships_path, class: 'item' %>
 	<% if jobseeker_signed_in? %>
 	    <div class="item link"> <%= render 'layouts/settings_dropdown' %></div>
@@ -22,15 +13,7 @@
 	    </div>
     </div>
 </div>
-
 <br />
-<br />
-<br />
-<br />
-<br />
-<br />
-
-
 <script>
  $('.ui.search')
      .search({

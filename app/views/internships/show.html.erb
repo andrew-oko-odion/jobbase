@@ -1,25 +1,32 @@
 <div class="ui text container">
-    <div style="float: right"> <%= social_share_button_tag(@job.title) %> </div>
+    <div class="ui very padded piled segment">
+	<% session[:applying] = @job.id %>
+	<%= form_for :apply, url: welcome_path, remote: true  do |f|  %>
+	    <%= f.hidden_field :jobseeker_id, value: jobseeker_signed_in? ? current_jobseeker.id : nil  %>
+	    <%= f.hidden_field :job_id, value: @job.id  %>
+	    <%= f.hidden_field :employer_id, value: @job.employer.id  %>
+	    <%= f.submit 'Apply', id: 'apply', class: 'ui violet right floated button' %>
+	<% end %>
 
-    
-    
-    <h2 class="ui blue header"> <%= @job.title  %> </h2>
-    <i class="large blue marker icon" ></i> <%= @job.location %>
-    <br /> 
-    <i class="large green money icon"></i> <%= number_to_currency @job.salary, unit: 'N' %>
+	<!-- <div style="float: right"> <%# social_share_button_tag(@job.title) %> </div> -->
+	<h2 class="ui blue header"> <%= @job.title.capitalize  %> </h2>
+	<i class="large blue marker icon" ></i> <%= @job.location.capitalize %>
+	<br /> 
+	<i class="large green money icon"></i> <%= number_to_currency @job.salary, unit: 'N' %>
 
-    <h3>Job Description </h3>
-    <%= @job.description %>
+	<h3>Job Description </h3>
+	<%= @job.description.capitalize %>
 
-    <% session[:applying] = @job.id %>
-    <%= form_for :apply, url: welcome_path, remote: true  do |f|  %>
-	<%= f.hidden_field :jobseeker_id, value: jobseeker_signed_in? ? current_jobseeker.id : nil  %>
-	<%= f.hidden_field :job_id, value: @job.id  %>
-	<%= f.hidden_field :employer_id, value: @job.employer.id  %>
-	<%= f.submit 'Apply', id: 'apply', class: 'ui violet right floated button' %>
-    <% end %>
-    <br />
-    <br />
-    <br />
-    <br />
+
+	<%= form_for :apply, url: welcome_path, remote: true  do |f|  %>
+	    <%= f.hidden_field :jobseeker_id, value: jobseeker_signed_in? ? current_jobseeker.id : nil  %>
+	    <%= f.hidden_field :job_id, value: @job.id  %>
+	    <%= f.hidden_field :employer_id, value: @job.employer.id  %>
+	    <%= f.submit 'Apply', id: 'apply', class: 'ui violet right floated button' %>
+	<% end %>
+	<br />
+	<br />
+	<br />
+	<br />
+    </div>
 </div>

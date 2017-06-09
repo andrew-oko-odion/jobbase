@@ -1,0 +1,8 @@
+$("#apply").addClass('disabled');
+toastr['success']("Application sent successfully");
+
+<% if @apply.errors.any? %>
+    <% @apply.errors.full_messages.each do |msg| %>
+      console.log('<%= msg %>');
+    <% end %>
+<% end %>

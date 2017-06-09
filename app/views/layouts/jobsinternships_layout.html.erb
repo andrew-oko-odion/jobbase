@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jobtest</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'toastr' %>
+    <%= stylesheet_pack_tag 'toastr' %>
+    <%= javascript_pack_tag 'semantic-ui' %>
+    <%= stylesheet_pack_tag 'semantic-ui' %>
+    <%# javascript_pack_tag 'nprogress' %>
+    <%# stylesheet_pack_tag 'nprogress' %>
+    <%= javascript_pack_tag 'hello_react' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/flash_messages' %>
+
+    <% if jobseeker_signed_in? %>
+    
+    <div class="ui stackable relaxed grid container">
+      <div class="three wide computer tablet only column">
+	 <%= render "layouts/jobseeker_vertical_side_menu" %>
+      </div>
+
+      <div class="ten wide column">
+	<%= yield %>
+      </div>
+      
+      <div class="three wide computer tablet only column">
+	<div  class="row">
+	  <div class="ui blue message">
+	    Update your profile
+	  </div>
+	  <div class="ui green progress"> 
+	    <div class="bar"></div>
+	    <div class="label">Profile status</div>
+	  </div>
+	</div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<div class="row">
+	  <div class="ui positive attached message">
+	    Recent Applications
+	  </div>
+	  <div class="ui attached segment">
+	    <div class="ui items">
+	      <div class="item">
+		<div class="content">
+		  <a>   hello world </a>
+		</div>
+	      </div>
+
+	      <div class="item">
+		<div class="content">
+		  <a>   hello world </a>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <% else %>
+    <%= yield %>
+    <% end %>
+
+    
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    
+    
+    <%= render 'layouts/footernav' %>
+    <script>
+      $('.menu .item')
+      .state()
+      ;
+
+    </script>
+  </body>
+</html>
