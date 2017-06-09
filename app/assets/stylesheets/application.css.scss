@@ -1,0 +1,154 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* @import "semantic-ui"; */
+/* @import "social-share-button"; */
+
+
+ 
+
+#message {
+    border-radius: 0;
+    min-width: 220px !important;
+    z-index: 4;
+    position: absolute;
+    right: 120px;
+    /* border-color: violet; */
+}
+
+
+/* Social share button */
+$size: 24px;
+.social-share-button {
+    .ssb-icon {
+	background-size: $size $size;
+	height: $size;
+	width: $size;
+    }
+}
+
+.grid.column.relaxed {
+        margin-top: 40px
+}
+
+.eight.column.wide {
+        background-color: #FFFFFF;
+        margin-top: 13px;
+}
+
+#suggest {
+ background-color: #FFFFFF;
+ padding : 25px;
+}
+
+#header {
+background-color: #FFFFFF;
+}
+
+#vertical_menu {
+background-color: #FFFFFF;
+}
+
+body {
+        // background-color: #FFFFFF; 
+	// kground-color: #E8E8E8;
+	background-color: #F5F8FA;
+	//background-color: #F9F9FA
+}
+
+.ui.menu .item img.logo {
+    margin-right: 1.5em;
+
+}
+.main.container {
+    margin-top: 7em;
+}
+.wireframe {
+    margin-top: 2em;
+}
+.ui.footer.segment {
+    margin: 5em 0em 0em;
+    padding: 5em 0em;
+}
+/* Adding support for sticky footer */
+.site {
+    display: flex;
+    min-height: 200vh;
+    flex-direction: column;
+}
+
+.sticky-footer{
+    flex: 1
+}
+
+
+/* for stellar.js parallax scroll effects */
+.photo {
+    background-attachment: fixed;
+    background-position: 50% 0;
+    /* background-repeat: no-repeat; */
+    height: 450px;
+    position: relative;
+}
+.photo span {
+    bottom: 0;
+    color: white;
+    display: block;
+    left: 50%; 
+    margin-left: -640px;
+    font-size: 38px;
+    padding: 10px;
+    position: absolute;
+    text-shadow: 0 2px 0 black, 0 0 10px black;
+    width: 1280px;
+}
+
+.winter {
+    background: url('background.jpg');
+}
+.autumn {
+    background-image: url('winter.jpg');
+}
+
+
+.apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #aaaaaa; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }
