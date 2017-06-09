@@ -1,19 +1,8 @@
 <div class="ui form">
     <%= form_for @education  do |f| %>
 	<div class="field">
-	    <label>Education Type</label>
-	    <div class="ui selection dropdown">
-		<input type="hidden" name="education">
-		<i class="dropdown icon"></i>
-		<div class="default text">Education Type</div>
-		<div class="menu">
-		    <div class="item" data-value="3">Tetrary</div>
-		    <div class="item" data-value="2">Secondary</div>
-		    <div class="item" data-value="1">Primary</div>
-		</div>
-	    </div>
-	    <%#= f.label 'Education Type' %>
-	    <%#= f.text_field :education_type_id %> 
+	    <%= f.label 'Education Type' %>
+	    <%= f.select :education_type_id, options_from_collection_for_select(@education_type, "id", "title"), :prompt => 'Education Type', class: 'ui dropdown' %>
 	</div>
 	<div class="field">
 	    <%= f.label :School_Name %> 
