@@ -1,5 +1,5 @@
 <div class="ui text container">
-    
+    <div class="ui padded raised segment">    
 <h2>Forgot your password?</h2>
 <div class="ui form">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -17,4 +17,5 @@
 </div>
 
 <%= render "employers/shared/links" %>
+</div>
 </div>

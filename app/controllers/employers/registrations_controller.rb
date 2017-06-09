@@ -1,7 +1,15 @@
-class Employers::RegistrationsController < Devise::RegistrationsController
- before_action :configure_sign_up_params, only: [:create]
- before_action :configure_account_update_params, only: [:update]
+class Employers::ParameterSanitizer < Devise::ParameterSanitizer
+  # include Accessible
+  # before_action :check_user
+  layout 'dashboard'
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
+  def initialize(*)
+    super
+    permit(:sign_up, keys: [:username, :email])
+  end
+ 
   # GET /resource/sign_up
    def new
      super
