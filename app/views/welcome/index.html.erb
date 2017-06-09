@@ -1,29 +1,21 @@
-<div class="ui divided items">    
-    <% @jobs.each do |j| %>
-	<div class="item">
-	    <div class="content">
-		<%= link_to j.title, welcome_path(j), class: 'header' %>
-		<div class="meta">
-		    <span class="cinema">IFC Cinema</span>
-		</div>
-		<div class="description">
-		    <p> <%= j.description %> </p>
-		</div>
-		<div class="extra">
-		    <!-- <i class="right chevron icon"></i><!--  --> 
-		    <div class="ui label">Limited</div>
-		    <div class="ui label">IMAX</div>
-		    <div class="ui label"><i class="globe icon"></i> Additional Languages</div>
-		    
-		    <%= link_to "View Details", welcome_path(j), class: "ui right floated primary button", id: 'to_apply' %>
-		</div>
-	    </div>
+<div class="ui stackable fluid container">
+    <div class="row">
+	<div class="column">
+	    <%= render 'welcome/landing_segment' %>
 	</div>
-    <% end %>    
-</div>
-
-<div class="ui text container">
-    <div style="padding-top: 60px;">
-	<%= paginate @jobs  %>
+	<div class="column">
+	    Hello world 
+	</div>
     </div>
+
+    <div class="row">
+	<div class="column">
+	    Cool world 
+	</div>
+
+	<div class="column">
+	    column 2 for row 2
+	</div>
+    </div>
+    
 </div>
