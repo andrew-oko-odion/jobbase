@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location_for(resource) ||
       if resource.is_a?(Employer)
-        applications_path
+        dashboard_index_path
       elsif resource.is_a?(Jobseeker)
         jobs_path
       else
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope == :jobseeker
       jobs_path
     elsif resource_or_scope == :employer
-      dashboard_index_path
+      dashboard_welcome_path
     else
       root_path
     end
