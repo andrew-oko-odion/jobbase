@@ -1,0 +1,30 @@
+<div class="ui form">
+    <%= form_for :payment, url: payments_path  do |f|  %>
+	<div class="field">
+	    <%= f.label :card_no %>
+	    <%= f.text_field :card_no, placeholder: " example `789292625525255`"%>
+	</div>
+	
+	<div class="inline fields">
+	    <div class="field">
+		<%= f.label :expiry_year %>
+		<%= f.text_field :expiry_year %>
+	    </div>
+
+	    <div class="field">
+		<%= f.label :expiry_month %>
+		<%= f.text_field :expiry_month %>
+	    </div>
+	    
+	    <div class="field">
+		<%= f.label :cvv %>
+		<%= f.text_field :cvv %>
+	    </div>
+	</div>
+	
+	<div class="field">
+	    <%= f.submit 'Pay', class: 'ui violet button', id: 'pay' %>
+	</div>
+	
+    <% end %>
+</div>
