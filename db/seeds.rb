@@ -14,35 +14,76 @@
 
 # JobCategory.create([{}, {}, {}])
 ### Create sort order for candidates 
-SortOrder.create([{clause: 'not requirement'}, {clause: 'valid entry'}, {clause: 'call for next stage'}])
+# SortOrder.create([{clause: 'not requirement'}, {clause: 'valid entry'}, {clause: 'call for next stage'}])
 
-Accounting | Audit | Tax
-Administration & Office Support
-Agriculture | Farming
-Banking | Finance | Insurance
-Building Design | Architecture
-Construction
-Consulting | Business Strategy & Planning
-Creatives(Arts, Design, Fashion)
-Customer Service
-Education | Teaching|Training
-Engineering
-Executive | Top Management
-Healthcare | Pharmaceutical
-Hospitality | Leisure | Travels
-Human Resources
-Information Technology
-Legal
-Logistics | Transportation
-Manufacturing | Production
-Marketing | Advertising | Communications
-NGO | Community Services & Dev
-Oil&Gas | Mining | Energy
-Project | Programme Management
-QA&QC | HSE
-Real Estate | Property
-Research
-Sales | Business Development
-Supply Chain | Procurement
-Telecommunications
-Vocational Trade and Services
+Forum.create!([{
+  "title": "Assistant Manager",
+  "body": "Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+  "tag": "brand interactive communities"
+}, {
+  "title": "Administrative Officer",
+  "body": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus.",
+  "tag": "mesh B2C solutions"
+}, {
+  "title": "Registered Nurse",
+  "body": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",
+  "tag": "optimize efficient supply-chains"
+}, {
+  "title": "Nuclear Power Engineer",
+  "body": "Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",
+  "tag": "extend collaborative supply-chains"
+}, {
+  "title": "Pharmacist",
+  "body": "Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+  "tag": "incubate one-to-one convergence"
+}, {
+  "title": "Associate Professor",
+  "body": "Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis.",
+  "tag": "disintermediate magnetic infomediaries"
+}, {
+  "title": "Account Executive",
+  "body": "Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+  "tag": "productize collaborative e-commerce"
+}, {
+  "title": "Business Systems Development Analyst",
+  "body": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.",
+  "tag": "seize robust deliverables"
+}, {
+  "title": "Data Coordiator",
+  "body": "Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+  "tag": "deploy user-centric e-business"
+}, {
+  "title": "Account Representative III",
+  "body": "Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+  "tag": "repurpose value-added infrastructures"
+}])
+# Accounting | Audit | Tax
+# Administration & Office Support
+# Agriculture | Farming
+# Banking | Finance | Insurance
+# Building Design | Architecture
+# Construction
+# Consulting | Business Strategy & Planning
+# Creatives(Arts, Design, Fashion)
+# Customer Service
+# Education | Teaching|Training
+# Engineering
+# Executive | Top Management
+# Healthcare | Pharmaceutical
+# Hospitality | Leisure | Travels
+# Human Resources
+# Information Technology
+# Legal
+# Logistics | Transportation
+# Manufacturing | Production
+# Marketing | Advertising | Communications
+# NGO | Community Services & Dev
+# Oil&Gas | Mining | Energy
+# Project | Programme Management
+# QA&QC | HSE
+# Real Estate | Property
+# Research
+# Sales | Business Development
+# Supply Chain | Procurement
+# Telecommunications
+# Vocational Trade and Services
