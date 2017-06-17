@@ -13,4 +13,6 @@ class Jobseeker < ApplicationRecord
   has_many :associate
   has_many :application
   has_many :about
+  has_many :question
+  #has_many :reply
 end

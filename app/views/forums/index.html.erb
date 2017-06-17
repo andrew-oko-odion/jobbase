@@ -1,0 +1,13 @@
+<div class="ui container">
+    <div class="ui center aligned piled segment">
+	<% @questions.each do |q| %>
+	    <div class="ui header"> <%= link_to q.title, forum_path(q) %> </div>
+	    <br />
+	    <% tag = q.tag.split(" ") %>
+	    <% tag.each do |t|  %>
+		<div class="ui label"> <%= t %></div>
+	    <% end %>
+	    <br />
+	<% end %>
+    </div>
+</div>

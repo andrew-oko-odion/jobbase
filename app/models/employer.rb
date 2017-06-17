@@ -9,7 +9,11 @@ class Employer < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :job
   has_many :application
+  #has_many :reply
+  has_many :question
   # has_many :payments
 
   
 end
+
+

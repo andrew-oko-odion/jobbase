@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     end
   end
   
-  
+  resources :forums
   resources :sort_candidates
   resources :work_experiences
   resources :payments

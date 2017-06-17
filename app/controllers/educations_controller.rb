@@ -1,5 +1,6 @@
 class EducationsController < ApplicationController
-  before_action :authenticate_jobseeker!
+  skip_before_filter :verify_authenticity_token, if: Proc.new {|c| c.request.format.json? }
+  # before_action :authenticate_jobseeker!
   layout 'jobsinternships_layout'
   
   def index
