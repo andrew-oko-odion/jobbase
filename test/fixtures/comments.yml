@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  question: one
+  reply: one
+  employer: one
+  jobseeker: one
+
+two:
+  body: MyText
+  question: two
+  reply: two
+  employer: two
+  jobseeker: two
