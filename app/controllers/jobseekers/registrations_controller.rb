@@ -2,7 +2,8 @@ class Jobseekers::RegistrationsController < Devise::RegistrationsController
   #include Accessible
   #before_action :check_user
   layout 'jobsinternships_layout'
-  
+  before_action :authenticate_scope!
+  before_action :authenticate_jobseeker!, only: :index
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
