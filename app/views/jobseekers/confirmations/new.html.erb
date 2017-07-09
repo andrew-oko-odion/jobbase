@@ -1,18 +1,26 @@
+<div class="ui container">
+    <div class="ui text container">
+	<div class="ui very padded raised teal segment" style="border-radius: 0px;">
+	    <h3 class="ui blue header">Resend confirmation instructions</h3>
 
-<h2>Resend confirmation instructions</h2>
-<div class="ui form">
-    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-	<%= devise_error_messages! %>
-
-	<div class="field">
-	    <%= f.label :email %><br />
-	    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-	</div>
-
-	<div class="actions">
-	    <%= f.submit "Resend confirmation instructions" %>
-	</div>
-    <% end %>
-</div>
-
+	    <div class="ui form">
+		<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+		    <%= devise_error_messages! %>
+		    <div class="field">
+			<%= f.label :email %><br />
+			<div class="ui left icon input">
+			    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+			    <i class="violet mail icon"></i>
+			</div>
+		    </div>
+		    
+		    <div class="actions">
+			<%= f.submit "Resend confirmation instructions", class: 'ui violet button' %>
+		    </div>
+		<% end %>
+	    </div>
+	    <div class="ui hidden divider"></div>
 <%= render "jobseekers/shared/links" %>
+	</div>
+    </div>
+</div>

@@ -4,6 +4,7 @@
 	<title>Jobtest</title>
 	<%= csrf_meta_tags %>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	 <%= csrf_meta_tags %>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_pack_tag 'toastr' %>
@@ -22,7 +23,7 @@
 	<% end %>
 	
 	<% if employer_signed_in? %>
-	    <div class="ui two column Left floated relaxed stackable grid container">
+	    <div class="ui two column relaxed stackable grid container">
 		<div class="two wide column">
 		    <%= render 'dashboard/employer_side_nav' %>
 		</div>

@@ -5,7 +5,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session, if: Proc.new {|c| c.request.format.json? }
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
+  before_action :recent_application
+  before_action :cart_count
   
+  def recent_application
+    if jobseeker_signed_in?
+      @recent_application = Application.where(jobseeker_id: current_jobseeker).order('id DESC').limit(4)
+    end
+  end
+
+  def cart_count
+    @cart_items = current_employer.job.where(payment_status: :false)
+  end
+    
   def current_ability
     if jobseeker_signed_in? 
       @current_ability ||= JobseekerAbility.new(current_jobseeker)

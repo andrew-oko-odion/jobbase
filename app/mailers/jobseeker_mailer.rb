@@ -6,6 +6,12 @@ class JobseekerMailer < ApplicationMailer
   #   en.jobseeker_mailer.notification.subject
   #
 
+  def welcome(user)
+    @user = user
+    @url  = 'localhost:3000/user/login'
+    mail(to: @user.email, subject: 'Welcome to My Awesome Fooura')
+  end
+  
   def notification 
     @greeting = "Hi" 
     mail(to: 'hello@workgalore.com', subject: "Hello world")

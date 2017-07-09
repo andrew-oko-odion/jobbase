@@ -1,17 +1,22 @@
 <div class="ui text container">
     <div class="ui very padded piled segment">
 	<div class="ui divided items">    
-	    <% @jobs.each do |j| %>
+	    <% @jobs.each do |job| %>
 		<div class="item">
 		    <div class="content">
-			<%= link_to j.title.capitalize, job_path(j), class: 'header', id: 'full_details' %> 			    <span class="meta" style="float:right; font-size: 0.9em">2 days ago</span>
+			<%= link_to job.title.capitalize, job_path(job), class: 'header', id: 'full_details' %> 			    <span class="meta" style="float:right; font-size: 0.9em"><%= distance_of_time_in_words_to_now(job.created_at).gsub('about','') %> ago</span>
 			<div class="meta">
-			    <span class="cinema">Airtel</span>
-			    <span class="nameing"> <i class="marker icon"></i>Yaba Lagos, Nigeria</span>
+			    <span class="company-name"><%= job.company_name.capitalize %></span>
+			    <span class="Job location"> <i class="marker icon"></i><%= job.location.titleize %></span>
 			    <div class="ui tiny green header"> 150k - 300k </div>
 			</div>
 			<div class="description">
-			    <span class="meta"> <%= j.description.capitalize %></span>
+			    <!-- REMEMBER TO TAKE OUT THE ELSE CLAUSE -->
+			    <% if !job.job_experience.nil? && !job.job_type.nil? %>
+				<span class="meta"><%= job.job_type.title %></span> <span class="meta"> <%= job.job_experience.title %> experience </span>
+			    <% else %>
+				<span class="meta">Part-time</span> <span class="meta"> 2 -- 3 years experience </span>
+			    <% end %>
 			</div>
 			<div class="extra">
 			    <div class="ui grey label">Limited</div>
@@ -20,9 +25,8 @@
 			    <div class="ui grey label"><i class="globe icon"></i> Additional Languages</div>
 			    <div class="ui grey label"><i class="globe icon"></i> Additional Languages</div>
 			    <div class="ui grey label">IMAX</div>
-			    <div class="ui grey label"><i class="globe icon"></i> Additional Languages</div>
-			    <div class="ui grey label">IMAX</div>
-			    <%= link_to   job_path(j), class: "ui right floated violet icon button" do %>
+			    <div class="ui hidden divider"></div>
+			    <%= link_to   job_path(job), class: "ui right floated violet icon button" do %>
 				Full Details
 				<%= content_tag(:i, "", class: "angle double right icon") %>
 			    <% end %>

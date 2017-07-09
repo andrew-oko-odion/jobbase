@@ -17,7 +17,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'has_permalink'
 gem 'roadie', '~> 3.1.1'  # Handles inline css well for emails 
 gem "letter_opener", :group => :development # preview mail before sending 
-# gem 'acts-as-taggable-on', '~> 4.0'
+gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on'
 
 # REST Client for consumming API
 gem 'rest-client', '~> 2.0.1'

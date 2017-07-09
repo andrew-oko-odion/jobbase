@@ -7,8 +7,11 @@
 		    <%= devise_error_messages! %>
 
 		    <div class="field">
-			<%= f.label :email %>
-			<%= f.email_field :email, autofocus: true, placeholder: 'adewale@example.com' %>
+		      <%= f.label :email %>
+		      <div class="ui left icon input">
+			  <%= f.email_field :email, autofocus: true, placeholder: 'email@example.com' %>
+			  <i class="violet mail icon"></i>
+		      </div>
 		    </div>
 		    <div class="actions">
 			<%= f.submit "Reset password", class: 'ui violet button' %>

@@ -1,7 +1,4 @@
-
-
 module ApplicationHelper
-  
   def current_auth_resource
     if employer_signed_in?
       current_employer

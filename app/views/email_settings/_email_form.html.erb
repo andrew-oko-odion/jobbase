@@ -1,0 +1,14 @@
+<div class="ui form">
+    <%= form_for :email_settings, url: email_settings_path do |f| %>
+	<div class="field">
+	    <%= f.label :Email_Body %>
+	    <%= f.text_area :body, value: @email.body %>
+	    <%= f.hidden_field :title, value: @email.title %>
+	    <%= f.hidden_field :active, value: true %>
+	</div>
+
+	<div class="field">
+	    <%= f.submit class: "ui button" %>
+	</div>
+    <% end %>
+</div>

@@ -1,5 +1,5 @@
 class JobseekerNotificationsController < ApplicationController
-  layout 'jobsinternships_layout'
+  layout 'jobseeker_layout_internal'
   def index
   end
 end

@@ -1,26 +1,35 @@
 
 <div class="ui floating pointing labeled icon dropdown" >
     <% if !current_jobseeker.firstname.nil?  %>
+	<i class="user icon"></i>
 	<%= (current_jobseeker.firstname + ' ' + current_jobseeker.lastname).titleize %>
     <% else %>
+	<i class="user icon"></i>
 	<%= (current_jobseeker.fullname).titleize %>
     <% end %>
     <i class="angle down icon"></i>
-    <div class="menu">
-	
+    <div class="menu">	
 	<%= link_to educations_path , class: 'item'  do %>
 	    <i class="violet student icon"></i> Education     
 	<% end %>
 	<%= link_to  work_experiences_path, class: 'item' do %>
 	    <i class="violet travel icon"></i> Work Experience
 	<% end %>
-	<%= link_to edit_jobseeker_registration_path, class: 'item' do %>
+	<%= link_to jobseeker_notifications_path , class: 'item'  do %>
+	    <i class="violet bell icon"></i> Notification Settings    
+	<% end %>
+	<%= link_to application_history_index_path, class: 'item' do  %>
+	    <i class="violet bar chart icon"></i> Sent Application
+	<% end %>
+	<%= link_to user_profile_path, class: 'item' do %>
 	    <i class="violet setting icon"></i> Profile
+	<% end %>
+	<%= link_to edit_jobseeker_registration_path, class: 'item' do %>
+	    <i class="violet user icon"></i> Account
 	<% end %>
 	<%= link_to destroy_jobseeker_session_path, method: :delete, class: 'item' do %>
 	    <i class="violet sign out icon"></i> Logout
 	<% end %>
-	
     </div>    
 </div>
 

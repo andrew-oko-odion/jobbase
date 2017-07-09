@@ -1,27 +1,19 @@
-<div class="ui secondary vertical menu">
-    <a class="active item">
-	<i class="violet setting icon"></i>
-	Account settings
-    </a>
-    <a class="item">
-	Settings
-    </a>
 
-    <div class="ui accordion item">
-	<div class="title">
-	    <i class="dropdown icon"></i>
-	    Display Options
-	</div>
-	<div class="content">
-	    <a href="#"> hello world </a>
-	</div>
-    </div>
-    
-    <%= link_to application_history_index_path, class: 'item' do  %>
-	<i class="violet bar chart icon"></i>
-	My Applications
-    <% end %>
-    
+<div class="ui secondary vertical menu">
+    <!-- <div class="ui raised padded verical segment"> -->
+	<%= link_to edit_jobseeker_registration_path, class: 'item' do %>
+	    <i class="violet user icon"></i>Account Setup
+	<% end %>
+	<%= link_to user_profile_path,  class: 'item' do  %>
+	    <i class="violet setting icon"></i>Profile
+	<% end %>
+	<%= link_to jobseeker_notifications_path , class: 'item'  do %>
+	    <i class="violet bell icon"></i> Notification Settings    
+	<% end %>    
+	<%= link_to application_history_index_path, class: 'item' do  %>
+	    <i class="violet bar chart icon"></i> Sent Application
+	<% end %>
+	<!-- </div> -->
 </div>
 
 

@@ -1,15 +1,9 @@
 <div class="ui text container">
-    <div class="ui basic segment">
-	<%= link_to @job.next(@job), class: "ui top right attached basic label", :data => {:content => "Next Job", :position => "top right"}  do %>
-	    <i class="right chevron icon"></i>
+    <div class="ui very padded piled segment">
+	<%= link_to :back do %>
+	    <i class="left angle icon"></i>
+	    back
 	<% end %>
-
-
-	<%= link_to @job.prev(@job), class: "ui top left attached basic label", :data => {:content => "Previous Job", :position => "top right"}  do %>
-	    <i class="left chevron icon"></i>
-	<% end %>
-    </div>
-    <div class="ui very padded  piled segment">
 	<% session[:applying] = @job.id %>
 	<%= form_for :apply, url: jobs_path, remote: true do |f|  %>
 	    <%= f.hidden_field :jobseeker_id, value: jobseeker_signed_in? ? current_jobseeker.id : nil  %>
@@ -18,16 +12,25 @@
 	    <%= f.submit 'Apply', id: 'apply', class: 'ui violet right floated button' %>
 	<% end %>
 
-
 	<!-- <div style="float: right"> <%# social_share_button_tag(@job.title) %> </div> -->
-	<h2 class="ui violet header"> <%= @job.title.capitalize  %> </h2>
+	<h2 class="ui violet header"> <%= @job.title.capitalize %> </h2>
 	<i class="large violet marker icon" ></i> <%= @job.location.capitalize %>
-	<br /> 
-	<i class="large green money icon"></i> <%= number_to_currency @job.salary,  unit: 'N' %>
+	<br />
+	
+	<!--  Another Temporay Stuff REMEMBER TO CHANGE -->
+	<% if @job.higher_salary_unit? %>
+	    <i class="large green money icon"></i> <%= number_to_currency @job.higher_salary_unit,  unit: 'N' %>
+	<% else %>
+	    <i class="large green money icon"></i> 30000
+	<% end %>
 
 	<h3>Job Description </h3>
 	<%= @job.description.capitalize %>
-
+	
+	<% @job.tag_list.each do |tag| %>
+	    <div class="grey label"> <%= tag %> </div>
+	<% end %>
+	
 	<%= form_for :apply, url: jobs_path, remote: true  do |f|  %>
 	    <%= f.hidden_field :jobseeker_id, value: jobseeker_signed_in? ? current_jobseeker.id : nil  %>
 	    <%= f.hidden_field :job_id, value: @job.id  %>
@@ -43,7 +46,7 @@
 	<% end %>
 	<%= link_to @job.prev(@job), class: 'item', :data => {:content => "Next Job"}  do %>
 	    <i class="right chevron icon" ></i>
-	<% end %>
+	    <% end %>
     </div>
 </div>
 

@@ -1,0 +1,18 @@
+<div class="row" id="recent-application">
+    <div class="ui top attached raised segments">
+	<div class="ui info attached message">
+	    <span style="float:right;"> <%= link_to 'see all', application_history_index_path %> </span>
+	    <h5 class="ui tiny header"> Your Recent Applications </h5> 
+	</div>
+	<%#= @recent_application.inspect %>
+	<% @recent_application.each do |recent| %>
+	<div class="ui segment">
+	    <%= link_to recent.job.title.capitalize, job_url(recent.job.id) %>
+	    <div class="meta">
+		<%= recent.job.company_name.capitalize %>
+	    </div>
+	</div>
+	<% end %>
+    </div>
+</div>
+

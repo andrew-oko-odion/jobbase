@@ -6,7 +6,7 @@ class Jobseeker < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable # :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :education
   has_many :work_experience
@@ -14,5 +14,6 @@ class Jobseeker < ApplicationRecord
   has_many :application
   has_many :about
   has_many :question
-  #has_many :reply
+  has_many :reply
+  has_many :comment
 end

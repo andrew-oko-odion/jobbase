@@ -1,0 +1,40 @@
+<div class="ui two stackable grid container">
+    <div class="row">
+	<% @all_positive_emails.each do |pm| %>
+	<div class="eight wide column">
+	    <div class="ui very padded attached raised green segment">
+		<h4 class="ui header"> <%= pm.title %></h4>
+		<p> Dear Candidate, </p>
+		<p>
+		    <%= pm.body.truncate_words(45) %>
+		</p>
+	    </div>
+	    <div class="ui bottom attached buttons">
+		<div class="ui button"> View </div>
+		<%= link_to 'Edit', edit_email_setting_path(pm.id), class: "ui grey button" %>
+	    </div>
+	</div>
+	<% end %>
+    </div>
+
+    <div class="ui divider"></div>
+   
+    <div class="row">
+	<% @all_negetive_emails.each do |nm| %>
+	<div class="eight wide column">
+	    <div class="ui very padded attached raised red segment">
+		<h4 class="ui header"><%= nm.title %></h4>
+		<p> Dear Candidate, </p>
+		<p>
+		    <%= nm.body.truncate_words(45) %>
+		</p>
+	    </div>
+	    <div class="ui bottom attached buttons">
+		<div class="ui button"> View </div>
+		<%= link_to 'Edit', edit_email_setting_path(nm.id), class: "ui grey button" %>
+	    </div>
+	</div>
+	<% end %>
+    </div>
+    
+</div>

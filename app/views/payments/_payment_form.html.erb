@@ -2,29 +2,27 @@
     <%= form_for :payment, url: payments_path  do |f|  %>
 	<div class="field">
 	    <%= f.label :card_no %>
-	    <%= f.text_field :card_no, placeholder: " example `789292625525255`"%>
+	    <%= f.text_field :card_no, placeholder: '7892-9262-5525-255' %>
 	</div>
-	
-	<div class="inline fields">
-	    <div class="field">
+	<div class="fields">
+	    <div class="six wide field">
 		<%= f.label :expiry_year %>
 		<%= f.text_field :expiry_year %>
 	    </div>
-
-	    <div class="field">
+	    <div class="six wide field">
 		<%= f.label :expiry_month %>
 		<%= f.text_field :expiry_month %>
 	    </div>
-	    
-	    <div class="field">
+	    <div class="four wide field">
 		<%= f.label :cvv %>
 		<%= f.text_field :cvv %>
 	    </div>
 	</div>
-	
+	<br />
 	<div class="field">
-	    <%= f.submit 'Pay', class: 'ui violet button', id: 'pay' %>
-	</div>
-	
+	    <center> 
+		<%= f.submit '       Pay        ', class: 'ui violet button', id: 'pay' %>
+	    </center>
+	</div>	
     <% end %>
 </div>

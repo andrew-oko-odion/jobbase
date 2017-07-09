@@ -1,6 +1,8 @@
 class ApplicationsController < ApplicationController
+  respond_to :html, :js, :json
   before_action :authenticate_employer!
   layout 'dashboard'
+  
   def index
     @total_jobs = Job.where(employer_id: current_employer.id, active: :true)
     @applications_sort = Application.where(job_id: params[:id], sort_order_id: params[:sort_order_id])
@@ -22,31 +24,32 @@ class ApplicationsController < ApplicationController
 
   def new
     @job = Job.new
+    @job_type = JobType.where(hide: false).order(id: 'ASC')
+    @job_category = JobCategory.where(hide: false)
+    @job_experience = JobExperience.where(hide: false)
   end
 
-  def update
-    @candidate_application = Application.find(params[:id])
-    @candidate_application.update_attributes(sort_params)
-    respond_to do |f|
-      f.js 
-    end
-  end
-
- 
   def create
     @job = Job.new(job_params)
-    if @job.save
-      flash[:notice] = "Job Added to Cart"
+    if @job.save!
+      redirect_to jobcarts_path, notice: "Job Added to Cart"
       session[:job_id] = @job.id
-      redirect_to new_payment_path
     else
       flash[:alert] = "Job Post not Successfull"
       render :new
     end
   end
 
+    
+  def update
+    @candidate_application = Application.find(params[:id])
+    @candidate_application.update_attributes(sort_params)
+  end
+ 
+
+  private
   def job_params
-    params.require(:job).permit(:title, :job_type_id, :job_category_id, :description, :application_email, :location, :company_name, :closing_date, :salary, :employer_id, :card_no, :cvv, :expiry_year, :expiry_month, :amount, :firstname, :lastname, :phonenumber, :email, :recipient_bank, :recipent_account_number,  :apiKey, :redirecturl, :medium, :authoriztion, :tags)
+    params.require(:job).permit(:title, :job_type_id, :job_category_id, :company_name, :location, :description, :job_experience_id, :salary, :tag_list, :tags, :employer_id, :higher_salary_unit, :lower_salary_unit )
   end
 
   def sort_params

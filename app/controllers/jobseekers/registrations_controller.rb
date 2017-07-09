@@ -23,7 +23,7 @@ class Jobseekers::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
    def edit
-     super                                                            
+     super
    end
 
   # PUT /resource

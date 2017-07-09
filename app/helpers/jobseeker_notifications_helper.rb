@@ -1,0 +1,2 @@
+module JobseekerNotificationsHelper
+end

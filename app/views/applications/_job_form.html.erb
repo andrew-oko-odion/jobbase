@@ -2,67 +2,60 @@
     <%= form_for :job, url: applications_path, remote: true  do |f|  %>
 	<div class="field">
 	    <%= f.label :Job_Title %>
-	    <%= f.text_field :title, placeholder: " example `Software Developer`" %>
+	    <%= f.text_field :title, placeholder: "PHP Software Developer" %>
 	</div>
-	
+	<div class="fields">
+	    <div class="ten wide field">
+		<%#= f.label :Job_Category %>
+		<%= f.select :job_category_id, options_from_collection_for_select(@job_category, "id", "title"), :prompt => 'Select Job Category', class: 'ui search dropdown', id: 'category' %>
+	    </div>
+	    <div class="six wide field">
+		<%#= f.label :Job_type %>
+		<%= f.select :job_type_id, options_from_collection_for_select(@job_type, "id", "title"), :prompt => 'Select Job Type', class: 'ui dropdown' %>
+	    </div>
+	</div>
+	<div class="fields">
+	    <div class="eleven wide field">
+		<%= f.label :Company_name %>
+		<%= f.text_field :company_name, placeholder: 'Company Name' %>
+	    </div>
+	    <div class="six wide field">
+		<%= f.label :Job_Location%>
+		<%= f.text_field :location, placeholder: 'Yaba, Lagos state', autocomplete: true %>
+	    </div>
+	</div>
 	<div class="inline fields">
-	<div class="field">
-	    <%= f.label :Job_Type %>
-	    <%= f.text_field :job_type_id %>
-	    <%= f.select :job_type_id, class: "ui dropdown" %>
-	    <select class="ui dropdown">
-		<option value="">Job Type</option>
-		<option value="1">Job</option>
-		<option value="0">Intership</option>
-	    </select>
+	    <div class="eight wide field">
+	      <!-- <%= f.label :Expected_experience %> -->
+	      <br />
+		<%= f.select :job_experience_id, options_from_collection_for_select(@job_experience, "id", "title"), :prompt => 'Select Job Experience', class: 'ui dropdown' %>
+	    </div>
+	    <div class="five wide inline field">
+		<%= f.label :salary_range %>
+		<%= f.text_field :lower_salary_unit, placeholder: '200' %> 
+	    </div>
+	    <div class="five wide inline field">
+		<!-- <%= f.label :higer %> -->
+		<%= f.text_field :higher_salary_unit, placeholder: '250' %>
+	    </div>
 	</div>
-	
-	<div class="field">
-	    <%= f.label :Job_Category %>
-	    <%= f.text_field :job_category_id %>
-	</div>
-	</div>
-	
-	<div class="field">
-	    <%= f.label :Location%>
-	    <%= f.text_field :location %>
-	</div>
-
-	<div class="field">
-	    <%= f.label :Application_Email %>
-	    <%= f.text_field :application_email %>
-	</div>
-
-	<div class="field">
-	    <%= f.label :Company_name %>
-	    <%= f.text_field :company_name %>
-	</div>
-
-	<div class="inline field">
-	    <%= f.label :Closing_date %>
-	    <%= f.date_select :closing_date %>
-	</div>
-
-	<div class="field">
-	    <%= f.label :Salary_Per_Annul %>
-	    <%= f.text_field :salary %>
-	</div>
-	
-	<div class="field">
-	    <%= f.label :Tags %>
-	    <%= f.text_field :tags %>
-	</div>
-	
 	<div class="field">
 	    <%= f.label :Job_Description %>
-	    <%= f.text_area :description %>
+	    <%= f.text_area :description, autocomplete: true %>
 	</div>
 
+	<div class='field'>
+	    <%= f.label :tag_list, 'Tags (expected qualities to fill the role)' %>
+	    <%= f.text_field :tags, placeholder: '2.1 C programming skills', autocomplete: true %>
+	</div>
 	<%= f.hidden_field :employer_id, value: current_employer.id %>
-
 	<div class="field">
-	    <%= f.submit 'Post', class: 'ui big violet button', id: 'job_post' %>
+	    <center>
+		<%= f.submit '    Post New Job    ', class: 'ui big violet button', id: 'job_post' %>
+	    </center>
 	</div>
 
     <% end %>
 </div>
+
+

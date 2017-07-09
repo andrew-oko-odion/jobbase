@@ -1,10 +1,45 @@
 
-<h2> Preview Job <h2>
 
-    <div class="ui header" >
-	<%= @item.title %>
+<div class="ui text container">
+    <h2> Job Preview <h2>
+	<div class="ui very padded piled segment">
+	    <%= link_to :back do %>
+		<i class="left angle icon"></i>
+		back
+	    <% end %>
+	    
+	    <h2 class="ui violet header"> <%= @item.title.capitalize %> </h2>
+	    <i class="large violet marker icon" ></i> <%= @item.location.capitalize %>
+	    <br /> 
+	    <i class="large green money icon"></i> <%#= number_to_currency @item.salary,  unit: 'N' %>
+
+	    <h3>Job Description </h3>
+	    <%= @item.description.capitalize %>
+	    
+	    <% @item.tag_list.each do |tag| %>
+		<div class="grey label"> <%= tag %> </div>
+	    <% end %>
+	    <br />
+	    <br />
+	</div>
+	<div class="ui right floated compact menu">
+	    <%= link_to @item.next(@item), class: 'item', :data => {:content => "Previous Job", :position => "top right"}  do %>
+		<i class="left chevron icon"></i>
+	    <% end %>
+	    <%= link_to @item.prev(@item), class: 'item', :data => {:content => "Next Job"}  do %>
+		<i class="right chevron icon" ></i>
+	    <% end %>
+	</div>
     </div>
-    <div class="ui segment"> 
-	<%= @item.description %>
-    </div>
-    
+
+
+    <script>
+     $('.compact.menu .item')
+	 .popup()
+     ;
+
+     $('.segment .basic.label')
+	 .popup()
+     ;
+    </script>
+

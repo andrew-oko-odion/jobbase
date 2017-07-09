@@ -5,12 +5,12 @@
      .api({
 	 url: '<%= educations_url(format: :json) %>',
 	 onResponse: function(response) {
-	     console.log(response);
-	     console.log(response[0].school_name);
-	     console.log("this is cool");
+	     <!-- console.log(response); -->
+	     <!-- console.log(response[0].school_name); -->
+	     <!-- console.log("this is cool"); -->
 	     
 	     $.each ( response, function(index, value){
-		 console.log(value.school_website);
+		 <!-- console.log(value.school_website); -->
 	     });
 	     
 	 }

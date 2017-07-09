@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'application_history/index'
   get 'dashboard/welcome' => "dashboard#welcome"
   get 'welcome/internships' => "welcome#internship"
@@ -30,29 +31,36 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  
+
+  resources :employer_notifications
   resources :forums
   resources :sort_candidates
   resources :work_experiences
   resources :payments
   resources :dashboard
   resources :jobcarts
-  
+  resources :email_settings
+  resources :jobseeker_notifications
   
   # post 'applications/create'
   root 'welcome#index'
   
+  
+  #devise_for :jobseekers, controllers: {
+  #             registrations: 'jobseekers/registrations', sessions: 'jobseekers/sessions'
+  #           }
+
   devise_scope :jobseeker do 
-    get 'jobseekers/index' => 'jobseekers/registrations#index'
-  end
-  
-  devise_for :jobseekers, controllers: {
-               registrations: 'jobseekers/registrations', sessions: 'jobseekers/sessions'
-             }
-  
-  devise_for :employers, controllers: {
-               sessions: 'employers/sessions'
-             }
+    get 'user/profile' => 'jobseekers/registrations#index'
+    get 'user' => 'jobseekers/registrations#index'
+  end  
+  devise_for :jobseekers, path: 'user', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'sign_up' }
+
+  devise_for :employers, path: 'employer', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'sign_up' }
+
+  # devise_for :employers, controllers: {
+  #              sessions: 'employers/sessions'
+  #            }
 
   get 'dashboard/post'
 

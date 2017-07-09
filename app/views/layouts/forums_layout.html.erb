@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jobtest</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'toastr' %>
+    <%= stylesheet_pack_tag 'toastr' %>
+    <%= javascript_pack_tag 'semantic-ui' %>
+    <%= stylesheet_pack_tag 'semantic-ui' %>
+    <%# javascript_pack_tag 'progress' %>
+    <%# stylesheet_pack_tag 'nprogress' %>
+    <%= javascript_pack_tag 'progressbar' %>
+    <%= javascript_pack_tag 'hello_react' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/flash_messages' %>
+
+    <% if jobseeker_signed_in? %>
+    <div class="ui stackable relaxed grid container">
+	<!-- <div class="three wide computer tablet only column">
+	     <%#= render "layouts/jobseeker_vertical_side_menu" %>
+	     </div> -->
+      <div class="ten wide column">
+	<%= yield %>
+      </div>
+    </div>
+
+    <%# else %>
+    <%#= yield %>
+    <% end %>
+    
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    
+    
+    <%= render 'layouts/footernav' %>
+    <script>
+      $('.menu .item')
+      .state()
+      ;
+
+     <!-- $('#circle').circleProgress({ -->
+     <!-- 	 value: 0.75, -->
+     <!-- 	 size: 80, -->
+     <!-- 	 fill: { -->
+     <!-- 	     gradient: ["red", "orange"] -->
+     <!-- 	 } -->
+     <!-- }); -->
+    </script>
+
+    <script type="text/javascript">
+     var ready;
+     ready = function() {
+	 var circle = new ProgressBar.Circle('#circle', {
+             color: '#38A6A6',
+             duration: 3000,
+             easing: 'easeInOut',
+             strokeWidth: 7,
+             trailColor: '#D5D5D5',
+             trailWidth: 1,
+             text: {
+		 value: 30 <%#= (@percentage_of_goal * 100).round %> + '%'
+             },
+	 });
+
+	 /* circle.animate(<%#= @percentage_of_goal%>);*/
+     };
+
+     $(document).ready(ready);
+    </script>
+
+  </body>
+</html>

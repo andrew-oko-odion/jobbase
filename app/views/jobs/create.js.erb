@@ -3,6 +3,7 @@ toastr['success']("Application sent successfully");
 
 <% if @apply.errors.any? %>
     <% @apply.errors.full_messages.each do |msg| %>
+        toastr['success']("You have already Applied");
       console.log('<%= msg %>');
     <% end %>
 <% end %>

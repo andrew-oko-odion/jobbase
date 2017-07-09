@@ -4,18 +4,20 @@ class Job < ApplicationRecord
   searchkick word_start: [:title]
   friendly_id :slug_jobs, use: :slugged
 
-  belongs_to :job_type
+  acts_as_taggable_on :tags  
+  belongs_to :job_type 
   belongs_to :job_category
   belongs_to :employer
   has_many :application
   has_many :payment
-
+  belongs_to :job_experience
+  
   def next(job)
-    Job.where(job_type: 1, hide: false).where('id < ?', job.id).last
+    Job.where(hide: false).where('id < ?', job.id).last
   end
 
   def prev(job)
-    Job.where(job_type: 1, hide: false).where('id > ?', job.id).first
+    Job.where(hide: false).where('id > ?', job.id).first
   end
 
   

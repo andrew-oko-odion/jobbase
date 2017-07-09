@@ -1,23 +1,50 @@
-<div class="ui fixed stackable text menu "id="header" style="margin-top: 0px; padding-top: 1.5em; opacity: 0.9">
+
+<style type="text/css">
+ .fixed.text.menu {
+     /*
+      -webkit-box-shadow: 0 4px 6px -6px #222;
+      -moz-box-shadow: 0 4px 6px -6px #222;
+      box-shadow: 0 4px 6px -6px #222;
+    */
+     margin-top: 0px;
+     padding-top: 1.0em;
+     padding-bottom: 1.0em;
+     opacity: 0.9;
+     z-index: 4em; 
+ }
+</style>
+
+<div class="ui fixed stackable text menu "id="header">
     <div class="ui container">
 	<%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
-	    <div class="ui fluid search right item">
+	<a class="item" href="#">
+	    Fooura
+	</a>
+	<%= link_to "Questions wiki", forums_path, class: 'item' %> 
+	<a class="item" href="#">
+	   <div class="ui violet button" href="#">
+	       Ask Anything
+	   </div>
+	</a>
+	    <div class="ui fluid search item">
 		<div class="ui labeled icon input">
 		    <div class="ui grey label">
-			jobs | internships
+			Jobs
 		    </div>
-		    <%= text_field_tag :query, params[:query], class: "prompt", placeholder: 'Search jobs...', style: "border-radius: 0.2em;  width: 30em !important;" %>
+		    <%= text_field_tag :query, params[:query], class: "prompt", placeholder: 'Search jobs...', style: "border-radius: 0.4em;  min-width: 35em !important;" %>
 		    <i class="inverted circular search link icon"></i>
 		</div>
 	    </div>
-	<%= link_to 'Open Jobs', jobs_path, class: 'item' %>
-	<%= link_to 'Paid Internship', internships_path, class: 'item' %>
+	<%= link_to 'Open Jobs', jobs_path, class: 'right item' %>
 	<% if jobseeker_signed_in? %>
 	    <div class="item link"> <%= render 'layouts/settings_dropdown' %></div>
 	<% else %>
-	    <%= link_to "Login", new_jobseeker_session_path, class: 'item'  %>
+	    <%= link_to new_jobseeker_session_path, class: 'item' do  %>
+		<i class="user icon"></i>
+		Login
+	    <% end %>
 	    <div class="item">
-		<%= link_to raw('<i class="unlock alternate icon"></i>') + "Sign up", new_jobseeker_registration_path, class: "ui primary basic button" %> 
+		<%= link_to raw('<i class="unlock alternate icon"></i>') + "Sign up", new_jobseeker_registration_path, class: "ui violet button" %> 
 	<% end  %>
 	    </div>
     </div>

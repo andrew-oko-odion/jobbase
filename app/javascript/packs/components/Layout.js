@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Index from './Index'
+import Education from './Education'
 
 class Layout extends React.Component {
     constructor(props)
@@ -12,7 +13,7 @@ class Layout extends React.Component {
     {
 	return (
 	    <div>
-	    <Index />
+	    <Education />
 	    </div>
 	);
     }

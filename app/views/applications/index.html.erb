@@ -1,32 +1,24 @@
 <div class="ui container">
-    <div class="ui selection dropdown">
-	<i class="dropdown icon"></i>
-	<div class="text">Select Posted Job</div>
-	<div class="menu">
-	    <% @total_jobs.each do |j|  %>
-		<%= link_to j.title, applications_path(job_id: j.id), class: 'item' %> 
-	    <% end %>
-	</div>
-    </div>
-    
-    <button  class="ui icon button">
-	<i class="repeat icon"></i>
-    </button>
-     
-    <div class="ui icon input" >
-	<i class="search icon"></i>
-	<input type="text" class="prompt" placeholder="Search Candidates..." style="border-radius: 0.3em">
-    </div>  
-    
-    <div class="ui stackable fluid five item top attached menu">
-	<a class="item" data-tab="all">
+    <!--  REMEMBER THIS GUY HERE DECIDE QUICK -->
+    <!-- <div class="ui selection dropdown">
+	 <i class="dropdown icon"></i>
+	 <div class="text">Select Posted Job</div>
+	 <div class="menu">
+	 <% @total_jobs.each do |j|  %>
+	 <%= link_to j.title, applications_path(job_id: j.id), class: 'item' %> 
+	 <% end %>
+	 </div>
+	 </div> -->
+
+    <div class="ui stackable fluid five item top attached borderless menu">
+	<a class="active item" data-tab="all">
 	    All Applications <div class="ui circular label"> <%= @candidates.count %> </div> 
 	</a>
 	<a class="item" data-tab="accepted" href="#">
-	    <i class="big green checkmark icon"></i> Accepted <div class="ui circular label"> 5 </div>
+	    <i class=" green checkmark icon"></i> Accepted <div class="ui circular label"> 5 </div>
 	</a>
 	<a class="item" data-tab="interview" href="#">
-	    <i class="big green checkmark icon"></i> Invite interview <div class="ui circular label"> 5 </div>
+	    <i class="green checkmark icon"></i>Interview Invite<div class="ui circular label"> 5 </div>
 	</a>
 	<%#= link_to "Accepted", applications_path(job_id: j.id), class: 'item' do %>
 	<%#= content_tag(:div, "", class: "ui circular label") do %>
@@ -34,10 +26,10 @@
 	<%# end %>
 	<%# end %>
 	<a class="item" data-tab="rejected" href="#">
-	    <i class="big red remove icon"></i> Rejected <div class="ui circular label"> 7 </div>
+	    <i class="red remove icon"></i> Rejected <div class="ui circular label"> 7 </div>
 	</a>
 	<a class="item" data-tab="requirement" href="#">
-	    <i class="big red remove icon"></i>  Not Requirement <div class="ui circular label"> 3 </div>
+	    <i class="red remove icon"></i>  Not Requirement <div class="ui circular label"> 3 </div>
 	</a>
     </div>
     

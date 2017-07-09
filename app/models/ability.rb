@@ -1,21 +1,21 @@
 class Ability
   include CanCan::Ability
 
-  #def initialize(user)
-    # user ||= User.new # guest user (not logged in)
-#       if user.is_a?(Employer)
-         #can :manage, :all
- #        can :manage, Applications
-  #       can :manage, Dashboard
-  #       can :manage, Payments
-  #     elsif user.is_a?(Jobseeker)
-         #can :read, :all
-  #       can :manage, Welcome
-  #       can :manage, Educations
-  #       can :manage, WorkExperiences
-  #     else
-  #       can :read, :all
-  #     end
+  # def initialize(user)
+  #   user ||= User.new # guest user (not logged in)
+  #   if user.is_a?(Employer)
+  #     can :manage, :all
+  #     can :manage, Applications
+  #     can :manage, Dashboard
+  #     can :manage, Payments
+  #   elsif user.is_a?(Jobseeker)
+  #     can :read, :all
+  #     can :manage, Welcome
+  #     can :manage, Educations
+  #     can :manage, WorkExperiences
+  #   else
+  #     can :read, :all
+  #   end
     
     # The first argument to `can` is the action you are giving the user 
     # permission to do.

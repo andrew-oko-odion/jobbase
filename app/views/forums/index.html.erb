@@ -1,13 +1,89 @@
-<div class="ui container">
-    <div class="ui center aligned piled segment">
+<!-- <div class="ui horizontal segments">
+     <div class="ui segment">
+     <p>Interested</p>
+     </div>
+     <div class="ui segment">
+     <p>Reply Answers</p>
+     </div>
+     <div class="ui segment">
+     <p>Views</p>
+     </div>
+     </div>
+   -->
+
+
+<div class="ui stackable grid container">
+    <div class="twelve wide column">
+	<div class="ui divider"></div>
 	<% @questions.each do |q| %>
+	    <div style="float:right;">
+		<div style="float: left; padding-right: 2em; color: grey;">
+		    <%= time_ago_in_words(q.created_at).gsub('about','') %> ago
+		</div>
+		<div style="float: right">
+		    <%= render 'forums/report_dropdown' %>
+		</div>
+	    </div>
+	    
+	    <div class="ui basic segment" style="float: left; margin-right: 3em; padding: 0em">
+		<div class="ui mini statistic" style="padding: 0.3em">
+		    <div class="value">
+			16
+		    </div>
+		    <div style="font-size: 0.7em">
+			Interested
+		    </div>
+		</div>
+
+		<div class="ui green basic button" style="border-radius: 0em">
+		    <div class="ui mini statistic">
+			<div class="value">
+			    3
+			</div>
+			<div style="font-size: 0.7em">
+			    Answers
+			</div>
+		    </div>
+		</div>
+		<div class="ui mini statistic">
+		    <div class="value">
+			16
+		    </div>
+		    <div style="font-size: 0.7em">
+			Wiews
+		    </div>
+		</div>
+
+	    </div>
+	    
 	    <div class="ui header"> <%= link_to q.title, forum_path(q) %> </div>
 	    <br />
 	    <% tag = q.tag.split(" ") %>
 	    <% tag.each do |t|  %>
 		<div class="ui label"> <%= t %></div>
 	    <% end %>
-	    <br />
+	    <div class="ui divider"></div>
 	<% end %>
+	<div style="float: right"> 
+	    <%= paginate @questions %>
+	</div>
+    </div>
+
+    <div class="four wide column">
     </div>
 </div>
+
+
+
+<script>
+ $('#ask').on('click', () => {
+     console.log("ask clicked");
+     $('.ui.modal')
+	 .modal('show')
+     ;
+ });
+
+ $('.ui.dropdown')
+     .dropdown()
+ ;
+</script>

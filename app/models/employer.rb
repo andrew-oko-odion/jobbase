@@ -6,11 +6,12 @@ class Employer < ApplicationRecord
  # gravtastic
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :job
   has_many :application
-  #has_many :reply
+  has_many :reply
   has_many :question
+  has_many :comment
   # has_many :payments
 
   

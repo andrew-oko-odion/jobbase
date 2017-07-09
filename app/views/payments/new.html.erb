@@ -1,11 +1,14 @@
-<div class="ui container" style="background-color: white">
-    <div class="ui text container">
+<div class="ui centered stackable grid container" style="background-color: white">
+    <div class="ten wide column">
 	<div class="ui padded raised segment"> 
-	    <h3 class="header">
+	    <h3 class="ui centered header">
 		Payment
 	    </h3>
-	    <i class="big red visa icon"></i>
-	    <i class="big orange mastercard icon"></i>
+	    <div style="float: right">
+		<i class="big red visa icon"></i>
+		<i class="big orange mastercard icon"></i>
+	    </div>
+	    <br />
 	    <%= render 'payments/payment_form' %>
 	</div>
     </div>

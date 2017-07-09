@@ -1,0 +1,22 @@
+<div class="ui form">
+    <%= form_for :question, url: forums_path do |f|  %>
+	<div class="field">
+	    <%= f.label :title %>
+	    <%= f.text_field :title, placeholder: 'Title of your Question' %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :question %>
+	    <%= f.text_area :body %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :tags %>
+	    <%= f.text_field :tag %>
+	</div>
+
+	<div class="field">
+	    <%= f.submit class: 'ui violet button' %>
+	</div>
+    <% end %>
+</div>

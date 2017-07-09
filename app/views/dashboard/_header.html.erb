@@ -1,19 +1,23 @@
-<div class="ui container">
-    <div class="ui text menu">
-	<%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>
-	
+<div class="ui stackable text menu">
+    <div class="ui container">
+	<%= link_to  image_tag("logo.png") ,  root_path, class: 'item' %>	
 	<div class="right item">
 	    <% if employer_signed_in? %>
-		<div class="item">
-		    <%= render 'dashboard/employer_dropdown' %>
-		</div>
+		<%= link_to jobcarts_path, class: 'item' do  %>
+		    <div class="ui floating orange circular label"><%= @cart_items.count %></div>
+		    View Cart
+		    <i class="big violet cart icon"></i>
+		<% end %>
+		<%= render 'dashboard/employer_dropdown', class: 'item' %>
 	    <% else %>
-		<%= link_to "Login", new_employer_session_path, class: 'item'  %>
+		<%= link_to new_employer_session_path, class: 'item' do  %>
+		    <i class="user icon"></i>
+		    Login
+		<% end %>
 		<div class="item">
-		    <%= link_to raw('<i class="unlock alternate icon"></i>') + "Sign up", new_employer_registration_path, class: "ui small basic primary button"%> 
-
+		    <%= link_to raw('<i class="unlock alternate icon"></i>') + "Sign up", new_employer_registration_path, class: "ui small violet button"%>
 		</div>
-	    <% end  %>    
+	    <% end %>    
 	</div>
     </div>
 </div>
