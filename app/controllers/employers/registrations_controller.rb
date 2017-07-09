@@ -1,7 +1,7 @@
 class Employers::ParameterSanitizer < Devise::ParameterSanitizer
   # include Accessible
   # before_action :check_user
-  layout 'dashboard'
+  # layout 'dashboard'
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
