@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # ruby  '2.4.0'
-gem 'activeresource'
+gem 'activeresource', require: 'active_resource'
 gem 'webpacker', github: 'rails/webpacker'
 gem 'searchkick' # For search 
 gem 'ahoy_matey'  # Mail Analytics 
