@@ -3,12 +3,12 @@ class ApplicationHistoryController < ApplicationController
   # layout 'jobsinternships_layout'
   layout 'jobseeker_layout_internal'
   def index
-    @application_history = Application.where(jobseeker_id: current_jobseeker).order('id DESC').plant(params['page']).per(10)
-    # render layout: "dashboard"
+    @application_history = Application.where(jobseeker_id: current_jobseeker).order('id DESC').plant(params['page']).per(3)
   end
 
-   def autocomplete
-    @job_search = Job.search(params[:query], limit: 10)
+  def autocomplete
+    @job_search = Application.where(jobseeker_id: current_jobseeker).search(params[:query], limit: 10)
+    # @job_search = Job.search(params[:query], limit: 10)
   end
  
 end

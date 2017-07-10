@@ -29,3 +29,5 @@ ls
 /#Gemfile#
 /#ls#
 ls
+#*
+^#*

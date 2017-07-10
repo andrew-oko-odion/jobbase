@@ -1,5 +1,19 @@
-<div class="ui centered stackable grid container">
-<table class="ui padded selectable table">
+<div class="ui stackable grid container">
+    
+    <div class="ui attached menu">
+	<div class="right item">
+	    <div class="ui fluid search">
+		<div class="ui labeled icon input">
+		    <%= text_field_tag :query, params[:query], class: "prompt", placeholder: 'Search jobs...', style: "border-radius: 0.2em;  width: 45em !important;" %>
+		    <i class="inverted circular search link icon"></i>
+		    
+		</div>
+		<div class="results"></div>
+	    </div>
+	</div>
+    </div>
+    
+<table class="ui very basic padded selectable table">
     <thead>
 	<tr>
 	    <th> <div class="ui checkbox">
@@ -24,9 +38,7 @@
 	</tr>
 	<% end %>
     </tbody> 
-    <div style="float: right">
-	<%= paginate @application_history %>
-    </div>
+    
 </table>
 
 
@@ -40,7 +52,7 @@
  $('.ui.search')
      .search({
 	 apiSettings: {
-	     url: '//localhost:3000/jobs/autocomplete.json?query={query}'
+	     url: 'http://localhost:3000/application_history/autocomplete.json?query={query}'
 	 },
 	 fields: {
 	     results : 'items',
