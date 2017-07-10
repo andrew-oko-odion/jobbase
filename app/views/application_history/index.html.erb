@@ -1,19 +1,5 @@
-<table class="ui very padded selectable table">
-    <thead>
-	<tr><th colspan="3">
-	    <div h3 class="ui center aligned blue header"> My Application History </div>
-	  
-	    <div class="ui fluid search right item">
-		<div class="ui labeled icon input">
-		    <%= text_field_tag :query, params[:query], class: "prompt", placeholder: 'Search jobs...', style: "border-radius: 0.2em;  width: 30em !important;" %>
-		    <i class="inverted circular search link icon"></i>
-		  
-		</div>
-		<div class="results"></div>
-	    </div>
-	</th>
-	</tr>
-    </thead>
+<div class="ui centered stackable grid container">
+<table class="ui padded selectable table">
     <thead>
 	<tr>
 	    <th> <div class="ui checkbox">
@@ -48,7 +34,7 @@
     <%= paginate @application_history %>
 </div>
 
-
+</div>
 
 <script>
  $('.ui.search')
