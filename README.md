@@ -1,9 +1,9 @@
 ## README
 Jobbase is a very young jobboard that is still in development. 
-![screenshot](http://i.imgur.com/awqnE3v.png){:height="50%" width="50%"}
-![screenshot](http://i.imgur.com/ahzpHh6.png){:height="50%" width="50%"}
-![screenshot](http://i.imgur.com/lcWIskj.png){:height="50%" width="50%"}
-![screenshot](http://i.imgur.com/OkCjFOq.png){:height="50%" width="50%"}
+![screenshot](http://i.imgur.com/awqnE3v.png)
+![screenshot](http://i.imgur.com/ahzpHh6.png)
+![screenshot](http://i.imgur.com/lcWIskj.png)
+![screenshot](http://i.imgur.com/OkCjFOq.png)
 
 ## Features
 * Employers bashboard 
